@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AhY-Ny-9Yt">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Camera View Controller-->
+        <scene sceneID="NLv-ku-16s">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="AhY-Ny-9Yt" customClass="CameraViewController" customModule="SacredPlace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pQc-pq-Rck">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvi-22-efJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EgR-XI-9ed">
+                                <rect key="frame" x="300" y="0.0" width="114" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="画像選択"/>
+                                <connections>
+                                    <action selector="selectPhotoButton:" destination="AhY-Ny-9Yt" eventType="touchUpInside" id="wO4-K5-6Ki"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SnN-N0-Vte">
+                                <rect key="frame" x="0.0" y="-1" width="80" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="◀︎戻る"/>
+                                <connections>
+                                    <action selector="backToPage:" destination="AhY-Ny-9Yt" eventType="touchUpInside" id="aYu-M1-1YQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="mvi-22-efJ" firstAttribute="bottom" secondItem="hVz-id-9jc" secondAttribute="bottom" id="2Gm-ET-QBz"/>
+                            <constraint firstItem="mvi-22-efJ" firstAttribute="leading" secondItem="hVz-id-9jc" secondAttribute="leading" id="Arm-2P-B2k"/>
+                            <constraint firstItem="mvi-22-efJ" firstAttribute="top" secondItem="pQc-pq-Rck" secondAttribute="top" id="Og9-YK-CdW"/>
+                            <constraint firstItem="mvi-22-efJ" firstAttribute="trailing" secondItem="hVz-id-9jc" secondAttribute="trailing" id="Tv0-Df-Mmc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hVz-id-9jc"/>
+                    </view>
+                    <connections>
+                        <outlet property="arSceneView" destination="mvi-22-efJ" id="65L-vu-NID"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s2x-cR-Ivb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4XP-ky-RTQ">
+                    <connections>
+                        <action selector="tapGesture:" destination="AhY-Ny-9Yt" id="0am-db-0WS"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pinchGestureRecognizer id="unG-4l-JV1">
+                    <connections>
+                        <action selector="pinchGesture:" destination="AhY-Ny-9Yt" id="0rG-wx-AuV"/>
+                    </connections>
+                </pinchGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="147.82608695652175" y="95.380434782608702"/>
+        </scene>
+    </scenes>
+</document>

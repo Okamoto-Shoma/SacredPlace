@@ -3,27 +3,55 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		697460BA7A9D9F9E631D4F28 /* Pods_SacredPlace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F10DAA8A18C69F6B871DB60 /* Pods_SacredPlace.framework */; };
 		C1641389247E49190080C54A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1641388247E49190080C54A /* AppDelegate.swift */; };
 		C164138B247E49190080C54A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C164138A247E49190080C54A /* SceneDelegate.swift */; };
-		C164138D247E49190080C54A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C164138C247E49190080C54A /* ViewController.swift */; };
 		C1641390247E49190080C54A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C164138E247E49190080C54A /* Main.storyboard */; };
 		C1641392247E491B0080C54A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1641391247E491B0080C54A /* Assets.xcassets */; };
 		C1641395247E491B0080C54A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1641393247E491B0080C54A /* LaunchScreen.storyboard */; };
+		C164139E247E611F0080C54A /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C164139D247E611F0080C54A /* Home.storyboard */; };
+		C16413A0247E612F0080C54A /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C164139F247E612F0080C54A /* Camera.storyboard */; };
+		C16413A2247E61BA0080C54A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16413A1247E61BA0080C54A /* TabBarController.swift */; };
+		C16413A4247E63970080C54A /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16413A3247E63970080C54A /* CameraViewController.swift */; };
+		C16413A6247E63A60080C54A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16413A5247E63A60080C54A /* HomeViewController.swift */; };
+		C16413AA247F3ADB0080C54A /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16413A9247F3ADB0080C54A /* CreateAccountViewController.swift */; };
+		C16413AC247F3AE10080C54A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16413AB247F3AE10080C54A /* SettingViewController.swift */; };
+		C16413AE247F3AF00080C54A /* NewSpotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16413AD247F3AF00080C54A /* NewSpotsViewController.swift */; };
+		C16413B0247F3B290080C54A /* SpotListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16413AF247F3B290080C54A /* SpotListsViewController.swift */; };
+		C16413B5247FA2D10080C54A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C16413B4247FA2D10080C54A /* GoogleService-Info.plist */; };
+		C16413B7247FD2690080C54A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C16413B6247FD2690080C54A /* Login.storyboard */; };
+		C16413B9247FD28A0080C54A /* CreateAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C16413B8247FD28A0080C54A /* CreateAccount.storyboard */; };
+		C16413BB248006860080C54A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16413BA248006850080C54A /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F10DAA8A18C69F6B871DB60 /* Pods_SacredPlace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SacredPlace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A2C8ED1104743B9E38718F9 /* Pods-SacredPlace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SacredPlace.release.xcconfig"; path = "Target Support Files/Pods-SacredPlace/Pods-SacredPlace.release.xcconfig"; sourceTree = "<group>"; };
+		A4D135CA28A92B27EF3CEBBC /* Pods-SacredPlace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SacredPlace.debug.xcconfig"; path = "Target Support Files/Pods-SacredPlace/Pods-SacredPlace.debug.xcconfig"; sourceTree = "<group>"; };
 		C1641385247E49190080C54A /* SacredPlace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SacredPlace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1641388247E49190080C54A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C164138A247E49190080C54A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C164138C247E49190080C54A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C164138F247E49190080C54A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C1641391247E491B0080C54A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1641394247E491B0080C54A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1641396247E491B0080C54A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C164139D247E611F0080C54A /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		C164139F247E612F0080C54A /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
+		C16413A1247E61BA0080C54A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		C16413A3247E63970080C54A /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		C16413A5247E63A60080C54A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C16413A9247F3ADB0080C54A /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		C16413AB247F3AE10080C54A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		C16413AD247F3AF00080C54A /* NewSpotsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSpotsViewController.swift; sourceTree = "<group>"; };
+		C16413AF247F3B290080C54A /* SpotListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListsViewController.swift; sourceTree = "<group>"; };
+		C16413B4247FA2D10080C54A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C16413B6247FD2690080C54A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		C16413B8247FD28A0080C54A /* CreateAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAccount.storyboard; sourceTree = "<group>"; };
+		C16413BA248006850080C54A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +59,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				697460BA7A9D9F9E631D4F28 /* Pods_SacredPlace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C62A182EEFD28EB92CDF8E3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A4D135CA28A92B27EF3CEBBC /* Pods-SacredPlace.debug.xcconfig */,
+				9A2C8ED1104743B9E38718F9 /* Pods-SacredPlace.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C164137C247E49190080C54A = {
 			isa = PBXGroup;
 			children = (
 				C1641387247E49190080C54A /* SacredPlace */,
 				C1641386247E49190080C54A /* Products */,
+				0C62A182EEFD28EB92CDF8E3 /* Pods */,
+				C97C6BB6250205E8B43D1F3F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +98,57 @@
 			children = (
 				C1641388247E49190080C54A /* AppDelegate.swift */,
 				C164138A247E49190080C54A /* SceneDelegate.swift */,
-				C164138C247E49190080C54A /* ViewController.swift */,
-				C164138E247E49190080C54A /* Main.storyboard */,
+				C16413B3247F3B580080C54A /* ViewController */,
+				C16413B1247F3B3B0080C54A /* TabBarController */,
+				C164139C247E55CB0080C54A /* Storyboard */,
 				C1641391247E491B0080C54A /* Assets.xcassets */,
-				C1641393247E491B0080C54A /* LaunchScreen.storyboard */,
 				C1641396247E491B0080C54A /* Info.plist */,
+				C16413B4247FA2D10080C54A /* GoogleService-Info.plist */,
 			);
 			path = SacredPlace;
+			sourceTree = "<group>";
+		};
+		C164139C247E55CB0080C54A /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				C164138E247E49190080C54A /* Main.storyboard */,
+				C164139F247E612F0080C54A /* Camera.storyboard */,
+				C16413B6247FD2690080C54A /* Login.storyboard */,
+				C16413B8247FD28A0080C54A /* CreateAccount.storyboard */,
+				C164139D247E611F0080C54A /* Home.storyboard */,
+				C1641393247E491B0080C54A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		C16413B1247F3B3B0080C54A /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				C16413A1247E61BA0080C54A /* TabBarController.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		C16413B3247F3B580080C54A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C16413A5247E63A60080C54A /* HomeViewController.swift */,
+				C16413A9247F3ADB0080C54A /* CreateAccountViewController.swift */,
+				C16413AB247F3AE10080C54A /* SettingViewController.swift */,
+				C16413AD247F3AF00080C54A /* NewSpotsViewController.swift */,
+				C16413BA248006850080C54A /* LoginViewController.swift */,
+				C16413AF247F3B290080C54A /* SpotListsViewController.swift */,
+				C16413A3247E63970080C54A /* CameraViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C97C6BB6250205E8B43D1F3F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F10DAA8A18C69F6B871DB60 /* Pods_SacredPlace.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +158,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1641399247E491B0080C54A /* Build configuration list for PBXNativeTarget "SacredPlace" */;
 			buildPhases = (
+				4D262CD58AB6A8BF30A1152F /* [CP] Check Pods Manifest.lock */,
 				C1641381247E49190080C54A /* Sources */,
 				C1641382247E49190080C54A /* Frameworks */,
 				C1641383247E49190080C54A /* Resources */,
+				F2303E55C0E535326022D315 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,21 +211,75 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C16413B9247FD28A0080C54A /* CreateAccount.storyboard in Resources */,
 				C1641395247E491B0080C54A /* LaunchScreen.storyboard in Resources */,
 				C1641392247E491B0080C54A /* Assets.xcassets in Resources */,
+				C16413B7247FD2690080C54A /* Login.storyboard in Resources */,
 				C1641390247E49190080C54A /* Main.storyboard in Resources */,
+				C164139E247E611F0080C54A /* Home.storyboard in Resources */,
+				C16413A0247E612F0080C54A /* Camera.storyboard in Resources */,
+				C16413B5247FA2D10080C54A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4D262CD58AB6A8BF30A1152F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SacredPlace-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2303E55C0E535326022D315 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SacredPlace/Pods-SacredPlace-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SacredPlace/Pods-SacredPlace-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SacredPlace/Pods-SacredPlace-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C1641381247E49190080C54A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C164138D247E49190080C54A /* ViewController.swift in Sources */,
+				C16413AA247F3ADB0080C54A /* CreateAccountViewController.swift in Sources */,
+				C16413A6247E63A60080C54A /* HomeViewController.swift in Sources */,
+				C16413AE247F3AF00080C54A /* NewSpotsViewController.swift in Sources */,
+				C16413AC247F3AE10080C54A /* SettingViewController.swift in Sources */,
+				C16413A2247E61BA0080C54A /* TabBarController.swift in Sources */,
+				C16413A4247E63970080C54A /* CameraViewController.swift in Sources */,
 				C1641389247E49190080C54A /* AppDelegate.swift in Sources */,
+				C16413B0247F3B290080C54A /* SpotListsViewController.swift in Sources */,
+				C16413BB248006860080C54A /* LoginViewController.swift in Sources */,
 				C164138B247E49190080C54A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,10 +422,13 @@
 		};
 		C164139A247E491B0080C54A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4D135CA28A92B27EF3CEBBC /* Pods-SacredPlace.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XLM7K96PXP;
 				INFOPLIST_FILE = SacredPlace/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -293,16 +436,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.shoma.okamoto.SacredPlace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		C164139B247E491B0080C54A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A2C8ED1104743B9E38718F9 /* Pods-SacredPlace.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XLM7K96PXP;
 				INFOPLIST_FILE = SacredPlace/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,7 +456,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.shoma.okamoto.SacredPlace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
