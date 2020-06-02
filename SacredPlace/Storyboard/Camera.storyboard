@@ -10,7 +10,7 @@
         <!--Camera View Controller-->
         <scene sceneID="NLv-ku-16s">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="AhY-Ny-9Yt" customClass="CameraViewController" customModule="SacredPlace" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Camera" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AhY-Ny-9Yt" customClass="CameraViewController" customModule="SacredPlace" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pQc-pq-Rck">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -18,15 +18,6 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvi-22-efJ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </arscnView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EgR-XI-9ed">
-                                <rect key="frame" x="300" y="0.0" width="114" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="画像選択"/>
-                                <connections>
-                                    <action selector="selectPhotoButton:" destination="AhY-Ny-9Yt" eventType="touchUpInside" id="wO4-K5-6Ki"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SnN-N0-Vte">
                                 <rect key="frame" x="0.0" y="-1" width="80" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -51,11 +42,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2x-cR-Ivb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="4XP-ky-RTQ">
-                    <connections>
-                        <action selector="tapGesture:" destination="AhY-Ny-9Yt" id="0am-db-0WS"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <pinchGestureRecognizer id="unG-4l-JV1">
                     <connections>
                         <action selector="pinchGesture:" destination="AhY-Ny-9Yt" id="0rG-wx-AuV"/>

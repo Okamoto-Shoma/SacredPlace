@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		697460BA7A9D9F9E631D4F28 /* Pods_SacredPlace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F10DAA8A18C69F6B871DB60 /* Pods_SacredPlace.framework */; };
+		C10E4EE32484DB4C00C10AE5 /* SpotsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C10E4EE22484DB4C00C10AE5 /* SpotsList.storyboard */; };
+		C10E4EEB2484E47A00C10AE5 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E4EEA2484E47A00C10AE5 /* PostData.swift */; };
+		C10E4EEE248519F400C10AE5 /* SpotsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E4EEC248519F400C10AE5 /* SpotsListTableViewCell.swift */; };
+		C10E4EEF248519F400C10AE5 /* SpotsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10E4EED248519F400C10AE5 /* SpotsListTableViewCell.xib */; };
+		C112D3592480887F00EACCE0 /* NewSpots.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C112D3582480887F00EACCE0 /* NewSpots.storyboard */; };
+		C112D35B2480902800EACCE0 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C112D35A2480902800EACCE0 /* Setting.storyboard */; };
+		C112D35D24809A4C00EACCE0 /* SelectPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C112D35C24809A4C00EACCE0 /* SelectPhoto.storyboard */; };
+		C112D35F24809A5A00EACCE0 /* SelectPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C112D35E24809A5A00EACCE0 /* SelectPhotoViewController.swift */; };
+		C112D3672480A62B00EACCE0 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = C112D3662480A62B00EACCE0 /* Const.swift */; };
+		C1626EF22486125200B1626E /* Photo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1626EF12486125200B1626E /* Photo.storyboard */; };
+		C1626EF52486137900B1626E /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1626EF42486137900B1626E /* PhotoViewController.swift */; };
 		C1641389247E49190080C54A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1641388247E49190080C54A /* AppDelegate.swift */; };
 		C164138B247E49190080C54A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C164138A247E49190080C54A /* SceneDelegate.swift */; };
 		C1641390247E49190080C54A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C164138E247E49190080C54A /* Main.storyboard */; };
@@ -32,6 +43,17 @@
 		2F10DAA8A18C69F6B871DB60 /* Pods_SacredPlace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SacredPlace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A2C8ED1104743B9E38718F9 /* Pods-SacredPlace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SacredPlace.release.xcconfig"; path = "Target Support Files/Pods-SacredPlace/Pods-SacredPlace.release.xcconfig"; sourceTree = "<group>"; };
 		A4D135CA28A92B27EF3CEBBC /* Pods-SacredPlace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SacredPlace.debug.xcconfig"; path = "Target Support Files/Pods-SacredPlace/Pods-SacredPlace.debug.xcconfig"; sourceTree = "<group>"; };
+		C10E4EE22484DB4C00C10AE5 /* SpotsList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SpotsList.storyboard; sourceTree = "<group>"; };
+		C10E4EEA2484E47A00C10AE5 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
+		C10E4EEC248519F400C10AE5 /* SpotsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotsListTableViewCell.swift; sourceTree = "<group>"; };
+		C10E4EED248519F400C10AE5 /* SpotsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotsListTableViewCell.xib; sourceTree = "<group>"; };
+		C112D3582480887F00EACCE0 /* NewSpots.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewSpots.storyboard; sourceTree = "<group>"; };
+		C112D35A2480902800EACCE0 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		C112D35C24809A4C00EACCE0 /* SelectPhoto.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectPhoto.storyboard; sourceTree = "<group>"; };
+		C112D35E24809A5A00EACCE0 /* SelectPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPhotoViewController.swift; sourceTree = "<group>"; };
+		C112D3662480A62B00EACCE0 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		C1626EF12486125200B1626E /* Photo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Photo.storyboard; sourceTree = "<group>"; };
+		C1626EF42486137900B1626E /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		C1641385247E49190080C54A /* SacredPlace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SacredPlace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1641388247E49190080C54A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C164138A247E49190080C54A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +97,50 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C112D3602480A34600EACCE0 /* NewSpotsRegistration */ = {
+			isa = PBXGroup;
+			children = (
+				C16413AD247F3AF00080C54A /* NewSpotsViewController.swift */,
+				C112D35E24809A5A00EACCE0 /* SelectPhotoViewController.swift */,
+			);
+			path = NewSpotsRegistration;
+			sourceTree = "<group>";
+		};
+		C112D3612480A37D00EACCE0 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				C16413AB247F3AE10080C54A /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		C112D3632480A39000EACCE0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C16413BA248006850080C54A /* LoginViewController.swift */,
+				C16413A9247F3ADB0080C54A /* CreateAccountViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C112D3642480A3B500EACCE0 /* SpotList */ = {
+			isa = PBXGroup;
+			children = (
+				C16413AF247F3B290080C54A /* SpotListsViewController.swift */,
+				C10E4EEC248519F400C10AE5 /* SpotsListTableViewCell.swift */,
+				C10E4EED248519F400C10AE5 /* SpotsListTableViewCell.xib */,
+			);
+			path = SpotList;
+			sourceTree = "<group>";
+		};
+		C112D3652480A3CE00EACCE0 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				C16413A3247E63970080C54A /* CameraViewController.swift */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
 		C164137C247E49190080C54A = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				C1641388247E49190080C54A /* AppDelegate.swift */,
+				C112D3662480A62B00EACCE0 /* Const.swift */,
+				C10E4EEA2484E47A00C10AE5 /* PostData.swift */,
 				C164138A247E49190080C54A /* SceneDelegate.swift */,
 				C16413B3247F3B580080C54A /* ViewController */,
 				C16413B1247F3B3B0080C54A /* TabBarController */,
@@ -112,9 +180,14 @@
 			isa = PBXGroup;
 			children = (
 				C164138E247E49190080C54A /* Main.storyboard */,
+				C112D35C24809A4C00EACCE0 /* SelectPhoto.storyboard */,
+				C10E4EE22484DB4C00C10AE5 /* SpotsList.storyboard */,
+				C112D3582480887F00EACCE0 /* NewSpots.storyboard */,
 				C164139F247E612F0080C54A /* Camera.storyboard */,
+				C1626EF12486125200B1626E /* Photo.storyboard */,
 				C16413B6247FD2690080C54A /* Login.storyboard */,
 				C16413B8247FD28A0080C54A /* CreateAccount.storyboard */,
+				C112D35A2480902800EACCE0 /* Setting.storyboard */,
 				C164139D247E611F0080C54A /* Home.storyboard */,
 				C1641393247E491B0080C54A /* LaunchScreen.storyboard */,
 			);
@@ -133,12 +206,12 @@
 			isa = PBXGroup;
 			children = (
 				C16413A5247E63A60080C54A /* HomeViewController.swift */,
-				C16413A9247F3ADB0080C54A /* CreateAccountViewController.swift */,
-				C16413AB247F3AE10080C54A /* SettingViewController.swift */,
-				C16413AD247F3AF00080C54A /* NewSpotsViewController.swift */,
-				C16413BA248006850080C54A /* LoginViewController.swift */,
-				C16413AF247F3B290080C54A /* SpotListsViewController.swift */,
-				C16413A3247E63970080C54A /* CameraViewController.swift */,
+				C112D3612480A37D00EACCE0 /* Setting */,
+				C112D3632480A39000EACCE0 /* Login */,
+				C112D3642480A3B500EACCE0 /* SpotList */,
+				C112D3602480A34600EACCE0 /* NewSpotsRegistration */,
+				C112D3652480A3CE00EACCE0 /* AR */,
+				C1626EF42486137900B1626E /* PhotoViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -214,9 +287,15 @@
 				C16413B9247FD28A0080C54A /* CreateAccount.storyboard in Resources */,
 				C1641395247E491B0080C54A /* LaunchScreen.storyboard in Resources */,
 				C1641392247E491B0080C54A /* Assets.xcassets in Resources */,
+				C112D3592480887F00EACCE0 /* NewSpots.storyboard in Resources */,
+				C10E4EEF248519F400C10AE5 /* SpotsListTableViewCell.xib in Resources */,
 				C16413B7247FD2690080C54A /* Login.storyboard in Resources */,
 				C1641390247E49190080C54A /* Main.storyboard in Resources */,
+				C1626EF22486125200B1626E /* Photo.storyboard in Resources */,
+				C10E4EE32484DB4C00C10AE5 /* SpotsList.storyboard in Resources */,
 				C164139E247E611F0080C54A /* Home.storyboard in Resources */,
+				C112D35D24809A4C00EACCE0 /* SelectPhoto.storyboard in Resources */,
+				C112D35B2480902800EACCE0 /* Setting.storyboard in Resources */,
 				C16413A0247E612F0080C54A /* Camera.storyboard in Resources */,
 				C16413B5247FA2D10080C54A /* GoogleService-Info.plist in Resources */,
 			);
@@ -272,15 +351,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				C16413AA247F3ADB0080C54A /* CreateAccountViewController.swift in Sources */,
+				C10E4EEE248519F400C10AE5 /* SpotsListTableViewCell.swift in Sources */,
 				C16413A6247E63A60080C54A /* HomeViewController.swift in Sources */,
 				C16413AE247F3AF00080C54A /* NewSpotsViewController.swift in Sources */,
 				C16413AC247F3AE10080C54A /* SettingViewController.swift in Sources */,
 				C16413A2247E61BA0080C54A /* TabBarController.swift in Sources */,
+				C10E4EEB2484E47A00C10AE5 /* PostData.swift in Sources */,
+				C112D3672480A62B00EACCE0 /* Const.swift in Sources */,
 				C16413A4247E63970080C54A /* CameraViewController.swift in Sources */,
 				C1641389247E49190080C54A /* AppDelegate.swift in Sources */,
 				C16413B0247F3B290080C54A /* SpotListsViewController.swift in Sources */,
+				C112D35F24809A5A00EACCE0 /* SelectPhotoViewController.swift in Sources */,
 				C16413BB248006860080C54A /* LoginViewController.swift in Sources */,
 				C164138B247E49190080C54A /* SceneDelegate.swift in Sources */,
+				C1626EF52486137900B1626E /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -72,3 +72,21 @@ extension TabBarController: UITabBarControllerDelegate {
         return true
     }
 }
+
+//MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
+extension TabBarController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if info[.originalImage] != nil {
+            //選択された画像を取得
+            guard let image = info[.originalImage] as? UIImage else { return }
+            
+            print("DEBUG_PRINT: image = \(image)")
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+}

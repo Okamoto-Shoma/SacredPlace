@@ -1,5 +1,5 @@
 //
-//  CreateAccountViewController.swift
+//  SettingViewController.swift
 //  SacredPlace
 //
 //  Created by 岡本 翔真 on 2020/05/28.
@@ -9,13 +9,8 @@
 import UIKit
 import Firebase
 
-class CreateAccountViewController: UIViewController {
-    
-    //MARK: - Outlet
-    
-    @IBOutlet private var mailaddressTextField: UITextField!
-    @IBOutlet private var userNameTextField: UITextField!
-    @IBOutlet private var passwordTextField: UITextField!
+
+class SettingViewController: UIViewController {
     
     //MARK: - LifeCycle
 
@@ -27,21 +22,19 @@ class CreateAccountViewController: UIViewController {
     
     //MARK: - Action
     
-    /// アカウント作成ボタン
-    /// - Parameter sender: UIButton
-    @IBAction func handleCreateAccountButton(_ sender: UIButton) {
+    @IBAction func handleLogout(_ sender: UIButton) {
+        //ログアウトする
+        try? Auth.auth().signOut()
         
-    }
-    
-    /// キャンセルボタン
-    /// - Parameter sender: UIButton
-    @IBAction func handleCancelButton(_ sender: UIButton) {
+        //ログイン画面に戻る
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login")
-        present(loginViewController, animated: true)
+        present(loginViewController, animated: true, completion: nil)
+        
+        //ログイン画面から戻っていた問いのためにホーム画面を選択している状態
+        tabBarController?.selectedIndex = 0
     }
     
-
     /*
     // MARK: - Navigation
 

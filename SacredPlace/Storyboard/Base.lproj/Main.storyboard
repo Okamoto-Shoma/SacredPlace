@@ -9,15 +9,19 @@
         <!--Tab Bar Controller-->
         <scene sceneID="jIf-yq-IOr">
             <objects>
-                <tabBarController id="SYL-Yx-9O0" customClass="TabBarController" customModule="SacredPlace" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SYL-Yx-9O0" customClass="TabBarController" customModule="SacredPlace" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dMS-AW-ssD">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="cD5-LE-DVP" kind="relationship" relationship="viewControllers" id="bo8-UQ-YRD"/>
-                        <segue destination="rsF-Ae-64g" kind="relationship" relationship="viewControllers" id="nnA-Kz-ZU0"/>
+                        <segue destination="C3t-iG-MN0" kind="relationship" relationship="viewControllers" id="Ws4-f2-e13"/>
+                        <segue destination="qss-FM-DGF" kind="relationship" relationship="viewControllers" id="Cwu-h8-Y3n"/>
+                        <segue destination="B2D-bQ-9xs" kind="relationship" relationship="viewControllers" id="q8L-vp-eV3"/>
+                        <segue destination="YpH-pf-pyw" kind="relationship" relationship="viewControllers" id="5LE-uf-Sd3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lv2-ag-Ro8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -28,21 +32,51 @@
         <scene sceneID="dzo-Cg-ifI">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="Home" storyboardName="Home" id="cD5-LE-DVP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Vi1-TZ-paR"/>
+                    <tabBarItem key="tabBarItem" title="ホーム" id="Vi1-TZ-paR"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="83y-rm-fD9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-132" y="625"/>
         </scene>
-        <!--Camera-->
-        <scene sceneID="tux-ha-J4H">
+        <!--SpotsList-->
+        <scene sceneID="tcS-al-1KC">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Camera" storyboardName="Camera" id="rsF-Ae-64g" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="hVv-hn-PuX"/>
+                <viewControllerPlaceholder storyboardIdentifier="SpotsList" storyboardName="SpotsList" id="qss-FM-DGF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="スポット一覧" id="ZdL-h7-mmP"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RkA-9A-MVJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L8Q-nh-2hD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="295" y="624"/>
+            <point key="canvasLocation" x="62" y="626"/>
+        </scene>
+        <!--Setting-->
+        <scene sceneID="QlW-4w-gvj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Setting" id="B2D-bQ-9xs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="設定" id="Yz3-tI-1XW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mob-gi-Zwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="228" y="624"/>
+        </scene>
+        <!--SelectPhoto-->
+        <scene sceneID="ABT-tq-nn5">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SelectPhoto" id="C3t-iG-MN0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="スポット登録" id="Rlk-0i-IzQ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tnf-2S-Ok0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="419" y="624"/>
+        </scene>
+        <!--Photo-->
+        <scene sceneID="QwR-Ub-jdt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Photo" id="YpH-pf-pyw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="LgW-vP-eai"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hf8-sf-9lb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="861" y="634"/>
         </scene>
     </scenes>
 </document>

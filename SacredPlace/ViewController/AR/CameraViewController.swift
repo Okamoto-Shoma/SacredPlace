@@ -9,8 +9,11 @@
 import UIKit
 import ARKit
 import SceneKit
+import AVFoundation
 
 class CameraViewController: UIViewController {
+    
+    var image: UIImage!
     
     //MARK: - Outlet
     @IBOutlet private var arSceneView: ARSCNView!
@@ -20,7 +23,6 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.arSceneView.delegate = self
         // Do any additional setup after loading the view.
         let mySession = ARSession()
         self.arSceneView.session = mySession
@@ -37,6 +39,7 @@ class CameraViewController: UIViewController {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         self.arSceneView.session.run(configuration)
+        self.setImageToScene(image: self.image)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -48,21 +51,7 @@ class CameraViewController: UIViewController {
     override var prefersStatusBarHidden: Bool { return true }
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation { return .slide}
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
     //MARK: - Action
-    
-    @IBAction func selectPhotoButton(_ sender: UIButton) {
-        self.showUIImagePicker()
-    }
     
     /// ページバック処理
     /// - Parameter sender: UIButton
@@ -86,18 +75,8 @@ class CameraViewController: UIViewController {
             }
         }
     }
-    //MARK: - PrivateMethod
     
-    /// フォトライブラリを開く処理
-    private func showUIImagePicker() {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let pickerController = UIImagePickerController()
-            pickerController.delegate = self
-            pickerController.sourceType = .photoLibrary
-            pickerController.modalPresentationStyle = .overFullScreen
-            self.present(pickerController, animated: true, completion: nil)
-        }
-    }
+    //MARK: - PrivateMethod
     
     /// ジェスチャーを追加
     private func registerGestureRecognizer() {
@@ -126,8 +105,8 @@ class CameraViewController: UIViewController {
     
     /// 画像追加処理
     /// - Parameter image: UIImage
-    private func setImageToScene(image: UIImage) {
-
+    func setImageToScene(image: UIImage) {
+        
         //カメラから500mm先の座標
         let position = SCNVector3(x: 0, y: 0, z: -0.5)
         //表示場所処理
@@ -148,31 +127,3 @@ class CameraViewController: UIViewController {
         print("DEBUG_PRINT: \(node)")
     }
 }
-
-//MARK: - ARSCNViewDelegate
-
-extension CameraViewController: ARSCNViewDelegate {
-}
-
-//MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
-
-extension CameraViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    /// 画像選択時処理
-    /// - Parameters:
-    ///   - picker: UIImagePickerController
-    ///   - info: UIImagePickerController.InfoKey
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.originalImage] as? UIImage else { return }
-        self.setImageToScene(image: image)
-        
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    /// 画面選択キャンセル処理
-    /// - Parameter picker: UIImagePickerController
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-}
-

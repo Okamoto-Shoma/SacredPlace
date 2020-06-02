@@ -20,12 +20,14 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>カメラの使用を許可します</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>位置情報の取得を許可します</string>
+	<key>NSCameraUsageDescription</key>
+	<string>カメラの使用を許可します</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>ライブラリへの使用を許可します</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>写真の追加を許可します</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
