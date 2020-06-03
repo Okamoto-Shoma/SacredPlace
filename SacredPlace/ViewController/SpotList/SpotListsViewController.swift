@@ -87,7 +87,6 @@ class SpotListsViewController: UIViewController {
     private func congigurationSubviews() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.mapView.delegate = self
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
         // Do any additional setup after loading the view.
@@ -102,7 +101,6 @@ class SpotListsViewController: UIViewController {
         //マップタイプ
         self.mapView.mapType = .standard
     }
-    
     
     /*
      // MARK: - Navigation
@@ -120,7 +118,7 @@ class SpotListsViewController: UIViewController {
 
 extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
     
-    /// TableViewの行数
+    /// 行数/列数
     /// - Parameters:
     ///   - tableView: UITableView
     ///   - section: Int
@@ -137,13 +135,14 @@ extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //セルを取得
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SpotsListTableViewCell
-        cell.setPostData(postArray[indexPath.row])
+        cell.setPostData(self.postArray[indexPath.row])
         
-        let post = postArray[indexPath.row]
+        let post = self.postArray[indexPath.row]
         let caption = post.caption
         let latitude = post.location?.latitude
         let longitude = post.location?.longitude
         let point = MKPointAnnotation()
+        
         point.title = caption
         point.coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
         self.mapView.addAnnotation(point)
@@ -155,21 +154,33 @@ extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    /// タップ時処理
+    /// - Parameters:
+    ///   - tableView: UITableView
+    ///   - indexPath: IndexPath
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    }
-}
-
-//MARK: - MKMapViewDelegate
-
-extension SpotListsViewController: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-        if let indexPath = self.tableView.indexPathForSelectedRow {
-            let post = self.postArray[indexPath.row]
-            print("DEBUG_PRINT: \(post)")
+        
+        let postData = self.postArray[indexPath.row]
+        guard let latitude = postData.location?.latitude else { return }
+        guard let longitude = postData.location?.longitude else { return }
+        let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: center, span: span)
+        self.mapView.setRegion(region, animated: true)
+        
+        //逆ジオコーディング
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            guard let placemark = placemarks?.first, error == nil else { return }
+            let administrativeArea = placemark.administrativeArea
+            let locality = placemark.locality
+            /*let thoroughfare = placemark.thoroughfare
+             let subThoroughfare = placemark.subThoroughfare*/
+            
+            print("DEBUG_PRINT: \(administrativeArea!)\(locality!)")
         }
     }
-    
 }
 
 //MARK: - CLLocationManagerDelegate
@@ -196,14 +207,4 @@ extension SpotListsViewController: CLLocationManagerDelegate {
             print("DEBUG_PRINT: 位置情報を許可してください。")
         }
     }
-    
-    
-    /* /// 位置情報更新処理
-     /// - Parameters:
-     ///   - manager: CLLocationManager
-     ///   - locations: CLLocation
-     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-     for location in locations {
-     print("DEBUG_PRINT: 緯度:\(location.coordinate.latitude) 経度:\(location.coordinate.longitude) 取得時刻:\(location.timestamp.description)")        }
-     } */
 }

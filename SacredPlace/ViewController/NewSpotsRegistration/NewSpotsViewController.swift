@@ -119,7 +119,6 @@ extension NewSpotsViewController: CLLocationManagerDelegate {
         }
     }
     
-    
     /// 位置情報更新処理
     /// - Parameters:
     ///   - manager: CLLocationManager

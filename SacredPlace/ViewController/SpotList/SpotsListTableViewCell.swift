@@ -52,11 +52,5 @@ class SpotsListTableViewCell: UITableViewCell {
         //緯度/経度表示
         self.latitudeLabel.text = "緯度：\(latitude)"
         self.longitudeLabel.text = "経度：\(longitude)"
-        
-        //ピン立て
-        let myPin: MKPointAnnotation = MKPointAnnotation()
-        let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        myPin.coordinate = center
-        myPin.title = "\(postData.caption!)"
-        }
+    }
 }
