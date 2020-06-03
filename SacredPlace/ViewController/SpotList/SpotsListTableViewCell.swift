@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseUI
+import CoreLocation
+import MapKit
 
 class SpotsListTableViewCell: UITableViewCell {
     
@@ -15,7 +17,8 @@ class SpotsListTableViewCell: UITableViewCell {
     
     @IBOutlet private var postImageView: UIImageView!
     @IBOutlet private var captionLabel: UILabel!
-    @IBOutlet private var locationLabel: UILabel!
+    @IBOutlet private var latitudeLabel: UILabel!
+    @IBOutlet private var longitudeLabel: UILabel!
     
     
     //MARK: - LifeCycle
@@ -38,13 +41,22 @@ class SpotsListTableViewCell: UITableViewCell {
     func setPostData(_ postData: PostData) {
         //画像の表示
         self.postImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + ".png")
+        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + ".jpg")
         self.postImageView.sd_setImage(with: imageRef)
         
         //キャプションの表示
-        self.captionLabel.text = ""
+        self.captionLabel.text = "\(postData.name!): \(postData.caption!)"
         
+        guard let latitude = postData.location?.latitude else { return }
+        guard let longitude = postData.location?.longitude else { return }
         //緯度/経度表示
-        self.locationLabel.text = "\(String(describing: postData.latitude))"
+        self.latitudeLabel.text = "緯度：\(latitude)"
+        self.longitudeLabel.text = "経度：\(longitude)"
+        
+        //ピン立て
+        let myPin: MKPointAnnotation = MKPointAnnotation()
+        let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        myPin.coordinate = center
+        myPin.title = "\(postData.caption!)"
         }
 }

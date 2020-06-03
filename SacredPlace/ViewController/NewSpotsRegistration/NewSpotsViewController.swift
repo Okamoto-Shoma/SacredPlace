@@ -43,14 +43,14 @@ class NewSpotsViewController: UIViewController {
     /// - Parameter sender: UIButton
     @IBAction func handleRegistrationButton(_ sender: UIButton) {
         //画像をPNG形式に変換する
-        let imageData = image.pngData()
+        let imageData = image.jpegData(compressionQuality: 0.75)
         //画像と位置情報データ、投稿データの保存場所を定義
         let postRef = Firestore.firestore().collection(Const.PostPath).document()
-        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postRef.documentID + "png")
+        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postRef.documentID + ".jpg")
        
         //Storageに画像をアップロード
         let metadata = StorageMetadata()
-        metadata.contentType = "image/png"
+        metadata.contentType = "image/jpeg"
         imageRef.putData(imageData!, metadata: metadata) { (metadata, error) in
             if error != nil {
                 //アップロード失敗
@@ -61,13 +61,13 @@ class NewSpotsViewController: UIViewController {
             
             //FireStoreに投稿データを保存する
             let name = Auth.auth().currentUser?.displayName
-            let posDic = [
+            let postDic = [
                 "name": name!,
                 "caption": self.registrationNameTextField.text!,
                 "date": FieldValue.serverTimestamp(),
                 "location": GeoPoint.init(latitude: (self.locationManager.location?.coordinate.latitude)!, longitude: (self.locationManager.location?.coordinate.longitude)!),
                 ] as [String: Any]
-            postRef.setData(posDic)
+            postRef.setData(postDic)
             
         }
         //カメラ画面に遷移

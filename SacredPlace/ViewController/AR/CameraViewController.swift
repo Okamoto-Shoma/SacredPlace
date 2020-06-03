@@ -53,6 +53,12 @@ class CameraViewController: UIViewController {
     
     //MARK: - Action
     
+    @IBAction func handleCameraButton(_ sender: UIButton) {
+        let image = self.arSceneView.snapshot()
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        AudioServicesPlaySystemSound(1108)
+    }
+    
     /// ページバック処理
     /// - Parameter sender: UIButton
     @IBAction func backToPage(_ sender: UIButton) {
