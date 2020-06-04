@@ -89,8 +89,6 @@ class CameraViewController: UIViewController {
         //ピンチ処理
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.pinchGesture))
         self.arSceneView.addGestureRecognizer(pinchGestureRecognizer)
-        
-        //タップ処理
     }
     
     /// Node作成処理
@@ -112,11 +110,10 @@ class CameraViewController: UIViewController {
     /// 画像追加処理
     /// - Parameter image: UIImage
     func setImageToScene(image: UIImage) {
-        
-        //カメラから500mm先の座標
-        let position = SCNVector3(x: 0, y: 0, z: -0.5)
         //表示場所処理
         guard let camera = self.arSceneView.pointOfView else { return }
+        //カメラから500mm先の座標
+        let position = SCNVector3(x: 0, y: 0, z: -0.5)
         //画面中央表示
         let convertPosition = camera.convertPosition(position, to: nil)
         

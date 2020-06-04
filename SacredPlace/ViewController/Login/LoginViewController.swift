@@ -55,8 +55,7 @@ class LoginViewController: UIViewController {
     /// アカウント作成処理
     /// - Parameter sender: UIButton
     @IBAction func handleCreateAccountButton(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "CreateAccount", bundle: nil)
-        let createAccountViewController = storyboard.instantiateViewController(withIdentifier: "Create")
+        guard let createAccountViewController = R.storyboard.self.createAccount.instantiateInitialViewController() else { return }
         self.present(createAccountViewController, animated: true, completion: nil)
     }
     /*

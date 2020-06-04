@@ -41,26 +41,17 @@ class CreateAccountViewController: UIViewController {
                 print("DEBUG_PRINT: 何かが空文字です。")
                 return
             }
-            //アドレスとパスワードでユーザー作成。ユーザー作成に成功すると、自動的にログイン
+            //アドレスとパスワードでユーザー作成。
             Auth.auth().createUser(withEmail: address, password: password) { authResult, error in
-                if let error = error {
-                    //エラーがあったら原因をprintして、return することで以降の処理を実行せずに処理を終了する
-                    print("DEBUG_PRINT: " + error.localizedDescription)
-                    return
-                }
+                guard error == nil else { return }
                 print("DEBUG_PRINT: ユーザー作成に成功しました。")
-                
                 //ユーザー名を設定
                 let user = Auth.auth().currentUser
                 if let user = user {
                     let changeRequest = user.createProfileChangeRequest()
                     changeRequest.displayName = userName
                     changeRequest.commitChanges { error in
-                        if let error = error {
-                            //プロフィール更新でエラー
-                            print("DEBUG_PRINT: " + error.localizedDescription)
-                            return
-                        }
+                        guard error == nil else { return }
                         print("DEBUG_PRINT: [userName = \(user.displayName!)の設定に成功しました。")
                         self.dismiss(animated: true, completion: nil)
                     }
@@ -72,8 +63,7 @@ class CreateAccountViewController: UIViewController {
     /// キャンセルボタン
     /// - Parameter sender: UIButton
     @IBAction func handleCancelButton(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login")
+        guard let loginViewController = R.storyboard.self.login.instantiateInitialViewController() else { return }
         present(loginViewController, animated: true)
     }
     

@@ -58,19 +58,19 @@ extension TabBarController: UITabBarControllerDelegate {
     ///   - tabBarController: UITabBarController
     ///   - viewController: UIViewController
     /// - Returns: Bool
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if viewController is CameraViewController {
-            //CameraViewControllerは、タブ切り替え時にタブバーを隠す
-            if let cameraViewController = storyboard?.instantiateViewController(withIdentifier: "Camera") {
-                //cameraViewController.modalPresentationStyle = .overFullScreen
-                present(cameraViewController, animated: true)
-                
-                return false
-            }
-        }
-        //その他のViewControllerは通常のタブ切り替え
-        return true
-    }
+//    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+//        if viewController is CameraViewController {
+//
+//            guard let cameraViewController = self.storyboard?.instantiateViewController(withIdentifier: "Camera") else { return true }
+//
+//            //cameraViewController.modalPresentationStyle = .overFullScreen
+//            present(cameraViewController, animated: true)
+//
+//            return false
+//        }
+//        //その他のViewControllerは通常のタブ切り替え
+//        return true
+//    }
 }
 
 //MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
@@ -80,10 +80,8 @@ extension TabBarController: UIImagePickerControllerDelegate, UINavigationControl
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if info[.originalImage] != nil {
             //選択された画像を取得
-            guard let image = info[.originalImage] as? UIImage else { return }
-            
-            print("DEBUG_PRINT: image = \(image)")
-        }
+            guard (info[.originalImage] as? UIImage) != nil else { return }
+            }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

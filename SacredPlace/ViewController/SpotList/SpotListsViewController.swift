@@ -14,14 +14,19 @@ import CoreLocation
 
 class SpotListsViewController: UIViewController {
     
-    var postArray: [PostData] = []
+    private var postArray: [PostData] = []
     // Firestoreのリスナー
-    var listener: ListenerRegistration!
-    var locationManager: CLLocationManager!
+    private var listener: ListenerRegistration!
+    private var locationManager: CLLocationManager!
     
     //MARK: - Outlet
     
-    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var tableView: UITableView! {
+        didSet {
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+        }
+    }
     @IBOutlet private var mapView: MKMapView!
     
     
@@ -31,13 +36,12 @@ class SpotListsViewController: UIViewController {
         super.viewDidLoad()
         
         self.congigurationSubviews()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        startUpdatingLocation()
+        self.startUpdatingLocation()
         
         if Auth.auth().currentUser != nil {
             //ログイン済
@@ -85,33 +89,17 @@ class SpotListsViewController: UIViewController {
     }
     
     private func congigurationSubviews() {
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
-        // Do any additional setup after loading the view.
         
         //カスタムセルの登録
-        let nib = UINib(nibName: "SpotsListTableViewCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "Cell")
-        
+        self.tableView.register(R.nib.self.spotsListTableViewCell)
         //現在地
         self.mapView.setCenter(self.mapView.userLocation.coordinate, animated: true)
-        self.mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
+        self.mapView.userTrackingMode = MKUserTrackingMode.follow
         //マップタイプ
         self.mapView.mapType = .standard
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
@@ -134,22 +122,19 @@ extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
     /// - Returns: cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //セルを取得
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SpotsListTableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "SpotCells", for: indexPath) as! SpotsListTableViewCell
         cell.setPostData(self.postArray[indexPath.row])
         
         let post = self.postArray[indexPath.row]
-        let caption = post.caption
-        let latitude = post.location?.latitude
-        let longitude = post.location?.longitude
-        let point = MKPointAnnotation()
-        
-        point.title = caption
-        point.coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
-        self.mapView.addAnnotation(point)
-        
-        print("DEBUG_PRINT: \(caption)")
-        print("DEBUG_PRINT: \(latitude!)")
-        print("DEBUG_PRINT: \(longitude!)")
+        if let caption = post.caption, let latitude = post.location?.latitude, let longitude = post.location?.longitude {
+            let point = MKPointAnnotation()
+            point.title = caption
+            point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            self.mapView.addAnnotation(point)
+            print("DEBUG_PRINT: \(caption)")
+            print("DEBUG_PRINT: \(latitude)")
+            print("DEBUG_PRINT: \(longitude)")
+        }
         
         return cell
     }
@@ -159,31 +144,21 @@ extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
     ///   - tableView: UITableView
     ///   - indexPath: IndexPath
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let postData = self.postArray[indexPath.row]
-        guard let latitude = postData.location?.latitude else { return }
-        guard let longitude = postData.location?.longitude else { return }
+        
+        guard let latitude = postData.location?.latitude, let longitude = postData.location?.longitude, let geocoder = postData.geocoder else { return }
         let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: center, span: span)
         self.mapView.setRegion(region, animated: true)
         
-        //逆ジオコーディング
-        let location = CLLocation(latitude: latitude, longitude: longitude)
-        let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(location) { placemarks, error in
-            guard let placemark = placemarks?.first, error == nil else { return }
-            let administrativeArea = placemark.administrativeArea
-            let locality = placemark.locality
-            /*let thoroughfare = placemark.thoroughfare
-             let subThoroughfare = placemark.subThoroughfare*/
-            
-            print("DEBUG_PRINT: \(administrativeArea!)\(locality!)")
-        }
+        print("DEBUG_PRINT: \(geocoder)")
     }
 }
 
+
 //MARK: - CLLocationManagerDelegate
+
 extension SpotListsViewController: CLLocationManagerDelegate {
     
     /// 位置情報取得処理
@@ -195,14 +170,11 @@ extension SpotListsViewController: CLLocationManagerDelegate {
         case .notDetermined:
             //アプリ使用中にのみ取得許可を求める
             locationManager.requestWhenInUseAuthorization()
-            break
         case .authorizedWhenInUse:
             print("DEBUG_PRINT: 位置情報取得が許可されました。")
             locationManager.startUpdatingLocation()
-            break
         case .denied:
             print("DEBUG_PRINT: 位置情報取得が拒否されました。")
-            break
         default:
             print("DEBUG_PRINT: 位置情報を許可してください。")
         }

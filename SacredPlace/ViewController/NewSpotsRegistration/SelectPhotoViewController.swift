@@ -45,18 +45,16 @@ class SelectPhotoViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 extension SelectPhotoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     /// 画像選択時処理
     /// - Parameters:
     ///   - picker: UIImagePickerController
     ///   - info: UIImagePickerController.InfoKey
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else { return }
-            
-        print("DEBUG_PRINT: image = \(image)")
         //画像確認画面に遷移
         let storyboard = UIStoryboard(name: "NewSpots", bundle: nil)
         guard let newSpotsViewController = storyboard.instantiateViewController(withIdentifier: "NewSpots") as? NewSpotsViewController else { return }

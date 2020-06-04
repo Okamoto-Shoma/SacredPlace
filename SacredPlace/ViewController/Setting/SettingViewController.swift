@@ -25,12 +25,9 @@ class SettingViewController: UIViewController {
     @IBAction func handleLogout(_ sender: UIButton) {
         //ログアウトする
         try? Auth.auth().signOut()
-        
         //ログイン画面に戻る
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login")
+        guard let loginViewController = R.storyboard.self.login.instantiateInitialViewController() else { return }
         present(loginViewController, animated: true, completion: nil)
-        
         //ログイン画面から戻っていた問いのためにホーム画面を選択している状態
         tabBarController?.selectedIndex = 0
     }

@@ -13,4 +13,5 @@ target 'SacredPlace' do
   pod 'Firebase/Storage'
   pod 'FirebaseUI/Storage'
   pod 'SVProgressHUD', '2.2.5'
+  pod 'R.swift'
 end

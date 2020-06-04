@@ -16,14 +16,16 @@ class PostData: NSObject {
     var caption: String?
     var date: Date?
     var location: GeoPoint?
+    var geocoder: String?
     
     init(document: QueryDocumentSnapshot) {
         self.id = document.self.documentID
         let postDic = document.self.data()
         self.name = postDic["name"] as? String
         self.caption = postDic["caption"] as? String
-        let timestamp = postDic["date"] as? Timestamp
-        self.date = timestamp?.dateValue()
+        guard let timestamp = postDic["date"] as? Timestamp else { return }
+        self.date = timestamp.dateValue()
         self.location = postDic["location"] as? GeoPoint
+        self.geocoder = postDic["geocoder"] as? String
     }
 }

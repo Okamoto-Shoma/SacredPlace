@@ -14,8 +14,8 @@ import CoreLocation
 
 class NewSpotsViewController: UIViewController {
     
-    var image: UIImage!
-    var locationManager: CLLocationManager!
+    var image: UIImage?
+    var locationManager: CLLocationManager?
     
     //MARK: - Outlet
     
@@ -27,9 +27,9 @@ class NewSpotsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.imageView.image = image
+        self.imageView.image = self.image
         self.locationManager = CLLocationManager()
-        self.locationManager.delegate = self
+        self.locationManager?.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -43,7 +43,7 @@ class NewSpotsViewController: UIViewController {
     /// - Parameter sender: UIButton
     @IBAction func handleRegistrationButton(_ sender: UIButton) {
         //画像をPNG形式に変換する
-        let imageData = image.jpegData(compressionQuality: 0.75)
+        guard let imageData = self.image?.jpegData(compressionQuality: 0.75) else { return }
         //画像と位置情報データ、投稿データの保存場所を定義
         let postRef = Firestore.firestore().collection(Const.PostPath).document()
         let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postRef.documentID + ".jpg")
@@ -51,7 +51,7 @@ class NewSpotsViewController: UIViewController {
         //Storageに画像をアップロード
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
-        imageRef.putData(imageData!, metadata: metadata) { (metadata, error) in
+        imageRef.putData(imageData, metadata: metadata) { (metadata, error) in
             if error != nil {
                 //アップロード失敗
                 print(error!)
@@ -60,20 +60,25 @@ class NewSpotsViewController: UIViewController {
             }
             
             //FireStoreに投稿データを保存する
-            let name = Auth.auth().currentUser?.displayName
-            let postDic = [
-                "name": name!,
-                "caption": self.registrationNameTextField.text!,
-                "date": FieldValue.serverTimestamp(),
-                "location": GeoPoint.init(latitude: (self.locationManager.location?.coordinate.latitude)!, longitude: (self.locationManager.location?.coordinate.longitude)!),
-                ] as [String: Any]
-            postRef.setData(postDic)
+            guard let name = Auth.auth().currentUser?.displayName, let latitude = self.locationManager?.location?.coordinate.latitude, let longitude = self.locationManager?.location?.coordinate.longitude else { return }
+            let geocoderLocation = CLLocation(latitude: latitude, longitude: longitude)
+            let geocoder = CLGeocoder()
             
+            geocoder.reverseGeocodeLocation(geocoderLocation) { placemarks, error in
+                guard let placemark = placemarks?.first, let administrativeArea = placemark.administrativeArea, error == nil else { return }
+                let postDic = [
+                    "name": name,
+                    "caption": self.registrationNameTextField.text!,
+                    "date": FieldValue.serverTimestamp(),
+                    "location": GeoPoint.init(latitude: latitude, longitude: longitude),
+                    "geocoder": administrativeArea,
+                ] as [String: Any]
+                postRef.setData(postDic)
+            }
         }
         //カメラ画面に遷移
-        let storyboard = UIStoryboard(name: "Camera", bundle: nil)
-        guard let cameraViewController = storyboard.instantiateViewController(withIdentifier: "Camera") as? CameraViewController else { return }
-        cameraViewController.image = image
+        guard let cameraViewController = R.storyboard.camera.instantiateInitialViewController() else { return }
+        cameraViewController.image = self.image
         self.present(cameraViewController, animated: true, completion: nil)
     }
     
@@ -105,11 +110,11 @@ extension NewSpotsViewController: CLLocationManagerDelegate {
         switch status {
         case .notDetermined:
             //アプリ使用中にのみ取得許可を求める
-            locationManager.requestWhenInUseAuthorization()
+            locationManager?.requestWhenInUseAuthorization()
             break
         case .authorizedWhenInUse:
             print("DEBUG_PRINT: 位置情報取得が許可されました。")
-            locationManager.startUpdatingLocation()
+            locationManager?.startUpdatingLocation()
             break
         case .denied:
             print("DEBUG_PRINT: 位置情報取得が拒否されました。")

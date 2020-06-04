@@ -35,6 +35,7 @@
 		C16413B7247FD2690080C54A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C16413B6247FD2690080C54A /* Login.storyboard */; };
 		C16413B9247FD28A0080C54A /* CreateAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C16413B8247FD28A0080C54A /* CreateAccount.storyboard */; };
 		C16413BB248006860080C54A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16413BA248006850080C54A /* LoginViewController.swift */; };
+		C186B47F2488BE85001F0F7F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C186B47E2488BE85001F0F7F /* R.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		C16413B6247FD2690080C54A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C16413B8247FD28A0080C54A /* CreateAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAccount.storyboard; sourceTree = "<group>"; };
 		C16413BA248006850080C54A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C186B47E2488BE85001F0F7F /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				C164139C247E55CB0080C54A /* Storyboard */,
 				C1641391247E491B0080C54A /* Assets.xcassets */,
 				C1641396247E491B0080C54A /* Info.plist */,
+				C186B47E2488BE85001F0F7F /* R.generated.swift */,
 				C16413B4247FA2D10080C54A /* GoogleService-Info.plist */,
 			);
 			path = SacredPlace;
@@ -230,6 +233,7 @@
 				C1641382247E49190080C54A /* Frameworks */,
 				C1641383247E49190080C54A /* Resources */,
 				F2303E55C0E535326022D315 /* [CP] Embed Pods Frameworks */,
+				C186B47D2488B9D7001F0F7F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -319,6 +323,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C186B47D2488B9D7001F0F7F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
 		F2303E55C0E535326022D315 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -345,6 +368,7 @@
 			files = (
 				C16413AA247F3ADB0080C54A /* CreateAccountViewController.swift in Sources */,
 				C10E4EEE248519F400C10AE5 /* SpotsListTableViewCell.swift in Sources */,
+				C186B47F2488BE85001F0F7F /* R.generated.swift in Sources */,
 				C16413A6247E63A60080C54A /* HomeViewController.swift in Sources */,
 				C16413AE247F3AF00080C54A /* NewSpotsViewController.swift in Sources */,
 				C16413AC247F3AE10080C54A /* SettingViewController.swift in Sources */,
