@@ -15,6 +15,7 @@ import CoreLocation
 class SpotListsViewController: UIViewController {
     
     private var postArray: [PostData] = []
+    private var buttonTag: Int?
     // Firestoreのリスナー
     private var listener: ListenerRegistration!
     private var locationManager: CLLocationManager!
@@ -25,6 +26,7 @@ class SpotListsViewController: UIViewController {
         didSet {
             self.tableView.delegate = self
             self.tableView.dataSource = self
+            self.tableView.register(R.nib.spotsListTableViewCell)
         }
     }
     @IBOutlet private var mapView: MKMapView!
@@ -76,6 +78,28 @@ class SpotListsViewController: UIViewController {
         }
     }
     
+    //MARK: - Action
+    
+    @objc func handleCameraButton(_ sender: UIButton, forEvent event: UIEvent) {
+        guard let touch = event.allTouches?.first else { return }
+        let point = touch.location(in: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: point)
+        let postData = self.postArray[indexPath!.row]
+        print("DEBUG_PRINT: \(postData)")
+        
+        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + ".jpg")
+        print("DEBUG_PRINT: \(imageRef)")
+        imageRef.getData(maxSize: 1 * 1024 * 1024) { (image, error) in
+            if error != nil {
+                return
+            }
+            let image = UIImage(data: image!)
+            guard let cameraViewController = R.storyboard.camera.instantiateInitialViewController() else { return }
+            cameraViewController.image = image
+            self.present(cameraViewController, animated: true, completion: nil)
+        }
+    }
+    
     //MARK: - PrivateMethod
     
     private func startUpdatingLocation() {
@@ -92,8 +116,7 @@ class SpotListsViewController: UIViewController {
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
         
-        //カスタムセルの登録
-        self.tableView.register(R.nib.self.spotsListTableViewCell)
+        
         //現在地
         self.mapView.setCenter(self.mapView.userLocation.coordinate, animated: true)
         self.mapView.userTrackingMode = MKUserTrackingMode.follow
@@ -122,19 +145,11 @@ extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
     /// - Returns: cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //セルを取得
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "SpotCells", for: indexPath) as! SpotsListTableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: R.nib.spotsListTableViewCell.identifier, for: indexPath) as! SpotsListTableViewCell
         cell.setPostData(self.postArray[indexPath.row])
-        
-        let post = self.postArray[indexPath.row]
-        if let caption = post.caption, let latitude = post.location?.latitude, let longitude = post.location?.longitude {
-            let point = MKPointAnnotation()
-            point.title = caption
-            point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            self.mapView.addAnnotation(point)
-            print("DEBUG_PRINT: \(caption)")
-            print("DEBUG_PRINT: \(latitude)")
-            print("DEBUG_PRINT: \(longitude)")
-        }
+        cell.self.cameraButton.tag = indexPath.row
+        cell.cameraButton.addTarget(self, action: #selector(handleCameraButton(_:forEvent:)), for: .touchUpInside)
+        self.buttonTag = cell.self.cameraButton.tag
         
         return cell
     }
@@ -145,14 +160,11 @@ extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
     ///   - indexPath: IndexPath
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let postData = self.postArray[indexPath.row]
-        
-        guard let latitude = postData.location?.latitude, let longitude = postData.location?.longitude, let geocoder = postData.geocoder else { return }
+        guard let latitude = postData.location?.latitude, let longitude = postData.location?.longitude else { return }
         let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: center, span: span)
         self.mapView.setRegion(region, animated: true)
-        
-        print("DEBUG_PRINT: \(geocoder)")
     }
 }
 
@@ -169,10 +181,10 @@ extension SpotListsViewController: CLLocationManagerDelegate {
         switch status {
         case .notDetermined:
             //アプリ使用中にのみ取得許可を求める
-            locationManager.requestWhenInUseAuthorization()
+            self.locationManager.requestWhenInUseAuthorization()
         case .authorizedWhenInUse:
             print("DEBUG_PRINT: 位置情報取得が許可されました。")
-            locationManager.startUpdatingLocation()
+            self.locationManager.startUpdatingLocation()
         case .denied:
             print("DEBUG_PRINT: 位置情報取得が拒否されました。")
         default:

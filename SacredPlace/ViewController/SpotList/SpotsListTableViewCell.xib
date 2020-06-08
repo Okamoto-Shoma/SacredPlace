@@ -48,15 +48,15 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llp-Bi-w4V">
-                        <rect key="frame" x="358" y="38" width="40" height="40"/>
+                        <rect key="frame" x="318" y="18" width="80" height="80"/>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="v2t-jQ-OKG"/>
-                            <constraint firstAttribute="height" constant="40" id="wkK-Wv-fJV"/>
+                            <constraint firstAttribute="width" constant="80" id="v2t-jQ-OKG"/>
+                            <constraint firstAttribute="height" constant="80" id="wkK-Wv-fJV"/>
                         </constraints>
                         <state key="normal" title="撮影"/>
                         <connections>
-                            <action selector="handleCameraButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hSm-Aq-Pmf"/>
+                            <action selector="handleCameraButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="the-v9-sl1"/>
                         </connections>
                     </button>
                 </subviews>
@@ -85,7 +85,7 @@
                 <outlet property="longitudeLabel" destination="PXz-DE-amL" id="r7b-ut-go9"/>
                 <outlet property="postImageView" destination="Y9v-Vm-zvi" id="vyD-4F-QdE"/>
             </connections>
-            <point key="canvasLocation" x="-68.115942028985515" y="14.0625"/>
+            <point key="canvasLocation" x="56.521739130434788" y="6.6964285714285712"/>
         </tableViewCell>
     </objects>
 </document>

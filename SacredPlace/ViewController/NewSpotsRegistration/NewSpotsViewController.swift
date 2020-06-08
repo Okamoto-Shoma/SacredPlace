@@ -42,8 +42,8 @@ class NewSpotsViewController: UIViewController {
     /// 投稿ボタン押下処理
     /// - Parameter sender: UIButton
     @IBAction func handleRegistrationButton(_ sender: UIButton) {
-        //画像をPNG形式に変換する
-        guard let imageData = self.image?.jpegData(compressionQuality: 0.75) else { return }
+        //画像をJPG形式に変換する
+        guard let imageData = self.image?.jpegData(compressionQuality: 0.2) else { return }
         //画像と位置情報データ、投稿データの保存場所を定義
         let postRef = Firestore.firestore().collection(Const.PostPath).document()
         let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postRef.documentID + ".jpg")

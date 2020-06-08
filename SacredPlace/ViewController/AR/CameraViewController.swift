@@ -26,8 +26,8 @@ class CameraViewController: UIViewController {
         // Do any additional setup after loading the view.
         let mySession = ARSession()
         self.arSceneView.session = mySession
-        self.arSceneView.showsStatistics = true
-        self.arSceneView.debugOptions = [.showWorldOrigin, .showFeaturePoints]
+//        self.arSceneView.showsStatistics = true
+//        self.arSceneView.debugOptions = [.showWorldOrigin, .showFeaturePoints]
         
         //ジェスチャー処理追加
         self.registerGestureRecognizer()

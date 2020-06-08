@@ -164,12 +164,12 @@
 				C112D3662480A62B00EACCE0 /* Const.swift */,
 				C10E4EEA2484E47A00C10AE5 /* PostData.swift */,
 				C164138A247E49190080C54A /* SceneDelegate.swift */,
+				C186B47E2488BE85001F0F7F /* R.generated.swift */,
 				C16413B3247F3B580080C54A /* ViewController */,
 				C16413B1247F3B3B0080C54A /* TabBarController */,
 				C164139C247E55CB0080C54A /* Storyboard */,
 				C1641391247E491B0080C54A /* Assets.xcassets */,
 				C1641396247E491B0080C54A /* Info.plist */,
-				C186B47E2488BE85001F0F7F /* R.generated.swift */,
 				C16413B4247FA2D10080C54A /* GoogleService-Info.plist */,
 			);
 			path = SacredPlace;
