@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import FirebaseFirestore
 import CoreLocation
 
 
@@ -19,15 +18,17 @@ class NewSpotsViewController: UIViewController {
     
     //MARK: - Outlet
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView! {
+        didSet {
+            self.imageView.image = self.image
+        }
+    }
     @IBOutlet private var registrationNameTextField: UITextField!
     
     //MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.imageView.image = self.image
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self
         // Do any additional setup after loading the view.
@@ -44,6 +45,9 @@ class NewSpotsViewController: UIViewController {
     @IBAction func handleRegistrationButton(_ sender: UIButton) {
         //画像をJPG形式に変換する
         guard let imageData = self.image?.jpegData(compressionQuality: 0.2) else { return }
+        
+        //guard let userId = Auth.auth().currentUser?.uid else { return }
+
         //画像と位置情報データ、投稿データの保存場所を定義
         let postRef = Firestore.firestore().collection(Const.PostPath).document()
         let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postRef.documentID + ".jpg")
@@ -65,13 +69,13 @@ class NewSpotsViewController: UIViewController {
             let geocoder = CLGeocoder()
             
             geocoder.reverseGeocodeLocation(geocoderLocation) { placemarks, error in
-                guard let placemark = placemarks?.first, let administrativeArea = placemark.administrativeArea, error == nil else { return }
+                guard let placemark = placemarks?.first, let administrativeArea = placemark.administrativeArea, let locality = placemark.locality, error == nil else { return }
                 let postDic = [
                     "name": name,
                     "caption": self.registrationNameTextField.text!,
                     "date": FieldValue.serverTimestamp(),
                     "location": GeoPoint.init(latitude: latitude, longitude: longitude),
-                    "geocoder": administrativeArea,
+                    "geocoder": "\(administrativeArea)\(locality)",
                 ] as [String: Any]
                 postRef.setData(postDic)
             }
@@ -87,16 +91,6 @@ class NewSpotsViewController: UIViewController {
     @IBAction func handleCancelButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 //MARK: - CLLocationManagerDelegate

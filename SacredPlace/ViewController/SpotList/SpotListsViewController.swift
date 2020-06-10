@@ -8,14 +8,14 @@
 
 import UIKit
 import Firebase
-import FirebaseFirestore
+import FirebaseUI
 import MapKit
 import CoreLocation
 
 class SpotListsViewController: UIViewController {
     
     private var postArray: [PostData] = []
-    private var buttonTag: Int?
+    
     // Firestoreのリスナー
     private var listener: ListenerRegistration!
     private var locationManager: CLLocationManager!
@@ -26,7 +26,7 @@ class SpotListsViewController: UIViewController {
         didSet {
             self.tableView.delegate = self
             self.tableView.dataSource = self
-            self.tableView.register(R.nib.spotsListTableViewCell)
+            self.tableView.reloadData()
         }
     }
     @IBOutlet private var mapView: MKMapView!
@@ -36,20 +36,45 @@ class SpotListsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.locationManager = CLLocationManager()
+        self.locationManager.delegate = self
+        //現在地
+        self.mapView.setCenter(self.mapView.userLocation.coordinate, animated: true)
+        self.mapView.userTrackingMode = MKUserTrackingMode.follow
+        //マップタイプ
+        self.mapView.mapType = .standard
+        self.tableView.register(R.nib.spotsListTableViewCell)
         
-        self.congigurationSubviews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.startUpdatingLocation()
-        
+        self.loginCheck()
+    }
+    
+    //MARK: - PrivateMethod
+    
+    /// 位置情報取得開始
+    private func startUpdatingLocation() {
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            self.locationManager.requestWhenInUseAuthorization()
+        default:
+            break
+        }
+        self.locationManager.startUpdatingLocation()
+    }
+    
+    /// ログイン確認
+    private func loginCheck () {
         if Auth.auth().currentUser != nil {
             //ログイン済
-            if self.listener == nil {
+            //if self.listener == nil {
                 //listenerが未登録なら、登録してスナップショットを受信
-                let postsRef = Firestore.firestore().collection(Const.PostPath).order(by: "date", descending: true)
+                //guard let userId = Auth.auth().currentUser?.uid else { return }
+                let postsRef = Firestore.firestore().collection(Const.PostPath).order(by: "location", descending: false)
                 self.listener = postsRef.addSnapshotListener() { (QuerySnapshot, error) in
                     if let error = error {
                         print("DEBUG_PRINT: snapshotの取得が失敗しました。\(error)")
@@ -59,13 +84,20 @@ class SpotListsViewController: UIViewController {
                     self.postArray = QuerySnapshot!.documents.map { document in
                         print("DEBUG_PRINT: document取得 \(document.documentID)")
                         let postData = PostData(document: document)
-                        
                         return postData
                     }
+                    guard let baseLatitude = self.locationManager.location?.coordinate.latitude, let baseLongitude = self.locationManager.location?.coordinate.longitude else { return }
+                    let baseLocation = CLLocation(latitude: baseLatitude, longitude: baseLongitude)
+                    
+                    let filtArray = self.postArray.filter({
+                        print("DEBUG_PRINT:\(baseLocation.distance(from: CLLocation(latitude: $0.location?.latitude ?? 0, longitude: $0.location?.longitude ?? 0)) < 5)")
+                        return baseLocation.distance(from: CLLocation(latitude: $0.location?.latitude ?? 0, longitude: $0.location?.longitude ?? 0)) < 10
+                    })
+                    self.postArray = filtArray
                     //TableViewの表示を更新
                     self.tableView.reloadData()
                 }
-            }
+           //}
         } else {
             //未ログイン
             if self.listener != nil {
@@ -77,53 +109,8 @@ class SpotListsViewController: UIViewController {
             }
         }
     }
-    
-    //MARK: - Action
-    
-    @objc func handleCameraButton(_ sender: UIButton, forEvent event: UIEvent) {
-        guard let touch = event.allTouches?.first else { return }
-        let point = touch.location(in: self.tableView)
-        let indexPath = self.tableView.indexPathForRow(at: point)
-        let postData = self.postArray[indexPath!.row]
-        print("DEBUG_PRINT: \(postData)")
-        
-        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + ".jpg")
-        print("DEBUG_PRINT: \(imageRef)")
-        imageRef.getData(maxSize: 1 * 1024 * 1024) { (image, error) in
-            if error != nil {
-                return
-            }
-            let image = UIImage(data: image!)
-            guard let cameraViewController = R.storyboard.camera.instantiateInitialViewController() else { return }
-            cameraViewController.image = image
-            self.present(cameraViewController, animated: true, completion: nil)
-        }
-    }
-    
-    //MARK: - PrivateMethod
-    
-    private func startUpdatingLocation() {
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined:
-            self.locationManager.requestWhenInUseAuthorization()
-        default:
-            break
-        }
-        self.locationManager.startUpdatingLocation()
-    }
-    
-    private func congigurationSubviews() {
-        self.locationManager = CLLocationManager()
-        self.locationManager.delegate = self
-        
-        
-        //現在地
-        self.mapView.setCenter(self.mapView.userLocation.coordinate, animated: true)
-        self.mapView.userTrackingMode = MKUserTrackingMode.follow
-        //マップタイプ
-        self.mapView.mapType = .standard
-    }
 }
+
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
 
@@ -146,11 +133,42 @@ extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //セルを取得
         let cell = self.tableView.dequeueReusableCell(withIdentifier: R.nib.spotsListTableViewCell.identifier, for: indexPath) as! SpotsListTableViewCell
-        cell.setPostData(self.postArray[indexPath.row])
-        cell.self.cameraButton.tag = indexPath.row
-        cell.cameraButton.addTarget(self, action: #selector(handleCameraButton(_:forEvent:)), for: .touchUpInside)
-        self.buttonTag = cell.self.cameraButton.tag
+        let postData = self.postArray[indexPath.row]
         
+        //各表示設定
+        guard let caption = postData.caption, let baseLatitude = self.locationManager.location?.coordinate.latitude, let baseLongitude = self.locationManager.location?.coordinate.longitude, let geocoder = postData.geocoder, let targetLatitude = postData.location?.latitude, let targetLongitude = postData.location?.longitude else { return cell }
+        
+        //タイトル表示
+        cell.self.title = caption
+        //場所表示
+        cell.self.geocoder = geocoder
+        //現在地からの距離表示
+        let baseLocation = CLLocation(latitude: baseLatitude, longitude: baseLongitude)
+        // 登録地
+        let targetLocation = CLLocation(latitude: targetLatitude, longitude: targetLongitude)
+        // 距離
+        let distance = baseLocation.distance(from: targetLocation)
+        cell.distance = distance
+        //FirebaseStorageから画像を取得
+        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + ".jpg")
+        //一覧に画像表示
+        cell.postImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        cell.postImageView.sd_setImage(with: imageRef)
+        //AR画面に画像表示処理
+        imageRef.getData(maxSize: 1 * 1024 * 1024) { (image, error) in
+            if error != nil {
+                return
+            }
+            let image = UIImage(data: image!)
+            //カメラボタン処理
+            cell.self.cameraButton.tag = indexPath.row
+            cell.buttonTapAction = {
+                guard let cameraViewController = R.storyboard.camera.instantiateInitialViewController() else { return }
+                cameraViewController.image = image
+                self.present(cameraViewController, animated: true, completion: nil)
+                print("DEBUG_PRINT: 撮影ボタンが押されました。")
+            }
+        }
         return cell
     }
     
@@ -162,7 +180,7 @@ extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
         let postData = self.postArray[indexPath.row]
         guard let latitude = postData.location?.latitude, let longitude = postData.location?.longitude else { return }
         let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
         let region = MKCoordinateRegion(center: center, span: span)
         self.mapView.setRegion(region, animated: true)
     }
@@ -191,4 +209,16 @@ extension SpotListsViewController: CLLocationManagerDelegate {
             print("DEBUG_PRINT: 位置情報を許可してください。")
         }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let lastlocation = locations.last
+        guard let last = lastlocation else { return }
+        let eventDate = last.timestamp
+        if abs(eventDate.timeIntervalSinceNow) < 15.0 {
+            self.loginCheck()
+            self.tableView.reloadData()
+        }
+    }
 }
+
+

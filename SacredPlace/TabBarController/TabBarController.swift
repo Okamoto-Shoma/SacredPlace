@@ -53,24 +53,7 @@ class TabBarController: UITabBarController {
 
 extension TabBarController: UITabBarControllerDelegate {
     
-    /// タブバー処理
-    /// - Parameters:
-    ///   - tabBarController: UITabBarController
-    ///   - viewController: UIViewController
-    /// - Returns: Bool
-//    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-//        if viewController is CameraViewController {
-//
-//            guard let cameraViewController = self.storyboard?.instantiateViewController(withIdentifier: "Camera") else { return true }
-//
-//            //cameraViewController.modalPresentationStyle = .overFullScreen
-//            present(cameraViewController, animated: true)
-//
-//            return false
-//        }
-//        //その他のViewControllerは通常のタブ切り替え
-//        return true
-//    }
+
 }
 
 //MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
