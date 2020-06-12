@@ -89,7 +89,31 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 10 storyboards.
+  /// This `R.segue` struct is generated, and contains static references to 1 view controllers.
+  struct segue {
+    /// This struct is generated for `HomeViewController`, and contains static references to 1 segues.
+    struct homeViewController {
+      /// Segue identifier `SelectPrefectures`.
+      static let selectPrefectures: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, HomeViewController, SelectPrefecturesViewController> = Rswift.StoryboardSegueIdentifier(identifier: "SelectPrefectures")
+
+      #if os(iOS) || os(tvOS)
+      /// Optionally returns a typed version of segue `SelectPrefectures`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func selectPrefectures(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, HomeViewController, SelectPrefecturesViewController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.homeViewController.selectPrefectures, segue: segue)
+      }
+      #endif
+
+      fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+  #endif
+
+  #if os(iOS) || os(tvOS)
+  /// This `R.storyboard` struct is generated, and contains static references to 11 storyboards.
   struct storyboard {
     /// Storyboard `Camera`.
     static let camera = _R.storyboard.camera()
@@ -107,6 +131,8 @@ struct R: Rswift.Validatable {
     static let newSpots = _R.storyboard.newSpots()
     /// Storyboard `SelectPhoto`.
     static let selectPhoto = _R.storyboard.selectPhoto()
+    /// Storyboard `SelectPrefectures`.
+    static let selectPrefectures = _R.storyboard.selectPrefectures()
     /// Storyboard `Setting`.
     static let setting = _R.storyboard.setting()
     /// Storyboard `SpotsList`.
@@ -165,6 +191,13 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "SelectPhoto", bundle: ...)`
     static func selectPhoto(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.selectPhoto)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "SelectPrefectures", bundle: ...)`
+    static func selectPrefectures(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.selectPrefectures)
     }
     #endif
 
@@ -251,10 +284,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 3 reuse identifiers.
   struct reuseIdentifier {
-    /// Reuse identifier `Cell`.
-    static let cell: Rswift.ReuseIdentifier<SpotsListTableViewCell> = Rswift.ReuseIdentifier(identifier: "Cell")
+    /// Reuse identifier `CollectionViewCell`.
+    static let collectionViewCell: Rswift.ReuseIdentifier<HomeCollectionViewCell> = Rswift.ReuseIdentifier(identifier: "CollectionViewCell")
+    /// Reuse identifier `SelectPrefectures`.
+    static let selectPrefectures: Rswift.ReuseIdentifier<SelectPrefecturesCollectionViewCell> = Rswift.ReuseIdentifier(identifier: "SelectPrefectures")
+    /// Reuse identifier `SpotCells`.
+    static let spotCells: Rswift.ReuseIdentifier<SpotsListTableViewCell> = Rswift.ReuseIdentifier(identifier: "SpotCells")
 
     fileprivate init() {}
   }
@@ -327,6 +364,9 @@ struct _R: Rswift.Validatable {
       try selectPhoto.validate()
       #endif
       #if os(iOS) || os(tvOS)
+      try selectPrefectures.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
       try setting.validate()
       #endif
       #if os(iOS) || os(tvOS)
@@ -380,12 +420,13 @@ struct _R: Rswift.Validatable {
 
     #if os(iOS) || os(tvOS)
     struct home: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = HomeViewController
+      typealias InitialController = UIKit.UINavigationController
 
       let bundle = R.hostingBundle
       let name = "Home"
 
       static func validate() throws {
+        if UIKit.UIImage(named: "house", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'house' is used in storyboard 'Home', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
@@ -445,6 +486,10 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
+        if UIKit.UIImage(named: "gear", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'gear' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "house", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'house' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "info.png", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'info.png' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "plus", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'plus' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.main().main() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'main' could not be loaded from storyboard 'Main' as 'TabBarController'.") }
@@ -478,12 +523,13 @@ struct _R: Rswift.Validatable {
 
     #if os(iOS) || os(tvOS)
     struct selectPhoto: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = SelectPhotoViewController
+      typealias InitialController = UIKit.UINavigationController
 
       let bundle = R.hostingBundle
       let name = "SelectPhoto"
 
       static func validate() throws {
+        if UIKit.UIImage(named: "plus", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'plus' is used in storyboard 'SelectPhoto', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
@@ -493,13 +539,36 @@ struct _R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    struct selectPrefectures: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = SelectPrefecturesViewController
+
+      let bundle = R.hostingBundle
+      let name = "SelectPrefectures"
+      let selectPrefectures = StoryboardViewControllerResource<SelectPrefecturesViewController>(identifier: "SelectPrefectures")
+
+      func selectPrefectures(_: Void = ()) -> SelectPrefecturesViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: selectPrefectures)
+      }
+
+      static func validate() throws {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+        if _R.storyboard.selectPrefectures().selectPrefectures() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'selectPrefectures' could not be loaded from storyboard 'SelectPrefectures' as 'SelectPrefecturesViewController'.") }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     struct setting: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = SettingViewController
+      typealias InitialController = UIKit.UINavigationController
 
       let bundle = R.hostingBundle
       let name = "Setting"
 
       static func validate() throws {
+        if UIKit.UIImage(named: "gear", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'gear' is used in storyboard 'Setting', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
@@ -510,7 +579,7 @@ struct _R: Rswift.Validatable {
 
     #if os(iOS) || os(tvOS)
     struct spotsList: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = SpotListsViewController
+      typealias InitialController = UIKit.UINavigationController
 
       let bundle = R.hostingBundle
       let name = "SpotsList"
@@ -521,6 +590,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
+        if UIKit.UIImage(named: "paperplane", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'paperplane' is used in storyboard 'SpotsList', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.spotsList().spotsList() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'spotsList' could not be loaded from storyboard 'SpotsList' as 'SpotListsViewController'.") }

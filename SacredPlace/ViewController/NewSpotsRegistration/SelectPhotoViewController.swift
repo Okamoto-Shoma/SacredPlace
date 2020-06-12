@@ -18,9 +18,9 @@ class SelectPhotoViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    //MARK: - Aciton
-    
-    @IBAction func handleSelectButton(_ sender: UIButton) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.showPhotoLibrary()
     }
     
@@ -35,16 +35,6 @@ class SelectPhotoViewController: UIViewController {
             self.present(pickerController, animated: true, completion: nil)
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
 extension SelectPhotoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -54,18 +44,18 @@ extension SelectPhotoViewController: UIImagePickerControllerDelegate, UINavigati
     ///   - picker: UIImagePickerController
     ///   - info: UIImagePickerController.InfoKey
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.originalImage] as? UIImage else { return }
+        guard let image = info[.originalImage] as? UIImage, let cameraViewController = R.storyboard.camera.instantiateInitialViewController() else { return }
         //画像確認画面に遷移
-        let storyboard = UIStoryboard(name: "NewSpots", bundle: nil)
-        guard let newSpotsViewController = storyboard.instantiateViewController(withIdentifier: "NewSpots") as? NewSpotsViewController else { return }
-        newSpotsViewController.image = image
+        cameraViewController.image = image
         picker.dismiss(animated: true, completion: nil)
-        self.present(newSpotsViewController, animated: true, completion: nil)
+        self.present(cameraViewController, animated: true, completion: nil)
+        self.tabBarController?.selectedIndex = 0
     }
     
     /// 画面選択キャンセル処理
     /// - Parameter picker: UIImagePickerController
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+        self.tabBarController?.selectedIndex = 0
     }
 }

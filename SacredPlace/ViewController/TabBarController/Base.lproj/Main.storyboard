@@ -14,7 +14,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dMS-AW-ssD">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="cD5-LE-DVP" kind="relationship" relationship="viewControllers" id="bo8-UQ-YRD"/>
@@ -31,7 +31,7 @@
         <scene sceneID="dzo-Cg-ifI">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="Home" storyboardName="Home" id="cD5-LE-DVP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="ホーム" id="Vi1-TZ-paR"/>
+                    <tabBarItem key="tabBarItem" title="ホーム" image="house" catalog="system" selectedImage="house" id="Vi1-TZ-paR"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="83y-rm-fD9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -41,7 +41,7 @@
         <scene sceneID="tcS-al-1KC">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="SpotsList" storyboardName="SpotsList" id="qss-FM-DGF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="スポット一覧" id="ZdL-h7-mmP"/>
+                    <tabBarItem key="tabBarItem" title="スポット一覧" image="info.png" id="ZdL-h7-mmP"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L8Q-nh-2hD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -51,7 +51,7 @@
         <scene sceneID="QlW-4w-gvj">
             <objects>
                 <viewControllerPlaceholder storyboardName="Setting" id="B2D-bQ-9xs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="設定" id="Yz3-tI-1XW"/>
+                    <tabBarItem key="tabBarItem" title="設定" image="gear" catalog="system" id="Yz3-tI-1XW"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mob-gi-Zwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,11 +61,17 @@
         <scene sceneID="ABT-tq-nn5">
             <objects>
                 <viewControllerPlaceholder storyboardName="SelectPhoto" id="C3t-iG-MN0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="スポット登録" id="Rlk-0i-IzQ"/>
+                    <tabBarItem key="tabBarItem" title="スポット登録" image="plus" catalog="system" id="Rlk-0i-IzQ"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tnf-2S-Ok0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="419" y="624"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="house" catalog="system" width="128" height="110"/>
+        <image name="info.png" width="28" height="28"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+    </resources>
 </document>

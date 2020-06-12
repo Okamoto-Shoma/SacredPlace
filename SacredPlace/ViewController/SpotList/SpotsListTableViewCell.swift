@@ -39,6 +39,7 @@ class SpotsListTableViewCell: UITableViewCell {
         self.captionLabel.text = self.title
         self.geocoderLabel.text = self.geocoder
         self.distanceLabel.text = "現在地からの距離：\(String(describing: self.distance!))"
+        
     }
     
     //MARK: - Action

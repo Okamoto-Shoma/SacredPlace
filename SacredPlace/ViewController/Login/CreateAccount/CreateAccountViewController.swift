@@ -54,14 +54,6 @@ class CreateAccountViewController: UIViewController {
                     changeRequest.commitChanges { error in
                         guard error == nil else { return }
                         print("DEBUG_PRINT: [userName = \(user.displayName!)の設定に成功しました。")
-                        
-                        let userRef = Firestore.firestore().collection(Const.PostPath).document()
-                        guard let name = Auth.auth().currentUser?.displayName else { return }
-                        let userDic = [
-                            "name": name,
-                        ]
-                        userRef.setData(userDic)
-
                         self.dismiss(animated: true, completion: nil)
                     }
                 }

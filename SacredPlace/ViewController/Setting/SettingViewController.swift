@@ -26,20 +26,9 @@ class SettingViewController: UIViewController {
         //ログアウトする
         try? Auth.auth().signOut()
         //ログイン画面に戻る
-        guard let loginViewController = R.storyboard.self.login.instantiateInitialViewController() else { return }
+        guard let loginViewController = R.storyboard.login.instantiateInitialViewController() else { return }
         present(loginViewController, animated: true, completion: nil)
         //ログイン画面から戻っていた問いのためにホーム画面を選択している状態
         tabBarController?.selectedIndex = 0
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

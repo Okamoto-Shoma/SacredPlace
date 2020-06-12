@@ -69,13 +69,13 @@ class NewSpotsViewController: UIViewController {
             let geocoder = CLGeocoder()
             
             geocoder.reverseGeocodeLocation(geocoderLocation) { placemarks, error in
-                guard let placemark = placemarks?.first, let administrativeArea = placemark.administrativeArea, let locality = placemark.locality, error == nil else { return }
+                guard let placemark = placemarks?.first, let administrativeArea = placemark.administrativeArea, error == nil else { return }
                 let postDic = [
                     "name": name,
                     "caption": self.registrationNameTextField.text!,
                     "date": FieldValue.serverTimestamp(),
                     "location": GeoPoint.init(latitude: latitude, longitude: longitude),
-                    "geocoder": "\(administrativeArea)\(locality)",
+                    "geocoder": "\(administrativeArea)",
                 ] as [String: Any]
                 postRef.setData(postDic)
             }
