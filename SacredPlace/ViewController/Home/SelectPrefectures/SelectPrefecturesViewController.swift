@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseUI
 
+
 class SelectPrefecturesViewController: UIViewController {
     
     var postArray: [PostData] = []
@@ -66,5 +67,14 @@ extension SelectPrefecturesViewController: UICollectionViewDelegate, UICollectio
         cell.collectionImageView.sd_setImage(with: imageRef)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let postData = self.postArray[indexPath.row]
+        guard let routeMapViewController = R.storyboard.routeMap.instantiateInitialViewController(), let latitude = postData.location?.latitude, let longitude = postData.location?.longitude else { return }
+        routeMapViewController.latitude = latitude
+        routeMapViewController.longitude = longitude
+        self.navigationController?.pushViewController(routeMapViewController, animated: true)
+        
     }
 }

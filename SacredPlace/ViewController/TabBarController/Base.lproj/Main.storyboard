@@ -50,7 +50,7 @@
         <!--Setting-->
         <scene sceneID="QlW-4w-gvj">
             <objects>
-                <viewControllerPlaceholder storyboardName="Setting" id="B2D-bQ-9xs" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="Setting" storyboardName="Setting" id="B2D-bQ-9xs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="設定" image="gear" catalog="system" id="Yz3-tI-1XW"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mob-gi-Zwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -60,7 +60,7 @@
         <!--SelectPhoto-->
         <scene sceneID="ABT-tq-nn5">
             <objects>
-                <viewControllerPlaceholder storyboardName="SelectPhoto" id="C3t-iG-MN0" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="SelectPhoto" storyboardName="SelectPhoto" id="C3t-iG-MN0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="スポット登録" image="plus" catalog="system" id="Rlk-0i-IzQ"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tnf-2S-Ok0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

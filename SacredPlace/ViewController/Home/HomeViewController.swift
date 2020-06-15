@@ -40,18 +40,22 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.dateCheck()
+        self.loginCheck()
+        self.navigationController?.navigationBar.barTintColor = .black
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.collectionView.collectionViewLayout.invalidateLayout()
+
     }
     
     //MARK: - PrivateMethod
     
-    /// Firebaseから情報を取得
-    func dateCheck() {
+    /// Firebaseからデータを取得
+    func loginCheck() {
         if Auth.auth().currentUser != nil {
             //ログイン済
             if self.listener == nil {
@@ -68,16 +72,7 @@ class HomeViewController: UIViewController {
                         let postData = PostData(document: document)
                         return postData
                     }
-                    //フィルター処理
-                    let filt: [String?] = self.postArray.map { $0.geocoder }
-                    if let filtArray = NSOrderedSet(array: filt).array as? [String] {
-                        for position in filtArray {
-                            let post = self.postArray.filter { $0.geocoder == position }
-                            self.postList.append(post)
-                        }
-                    }
-                    
-                    self.collectionView.reloadData()
+                    self.filtDate()
                 }
             } else {
                 //未ログイン
@@ -90,6 +85,20 @@ class HomeViewController: UIViewController {
                 self.collectionView.reloadData()
             }
         }
+    }
+    
+    /// データをフィルター処理
+    private func filtDate() {
+        //フィルター処理
+        let filt: [String?] = self.postArray.map { $0.geocoder }
+        self.postList.removeAll()
+        if let filtArray = NSOrderedSet(array: filt as [Any]).array as? [String] {
+            for position in filtArray {
+                let post = self.postArray.filter { $0.geocoder == position }
+                self.postList.append(post)
+            }
+        }
+        self.collectionView.reloadData()
     }
 }
 
@@ -114,18 +123,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     /// - Returns: cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.collectionViewCell.identifier, for: indexPath) as! HomeCollectionViewCell
-        cell.backgroundColor = .green
+        cell.backgroundColor = .white
         cell.collectionLabel.text = self.postList[indexPath.row].first?.geocoder
-        
-        //        let postData = self.postArray[indexPath.row]
-        //        guard let geocoder = postData.geocoder else { return cell }
-        //        //FirebaseStorageから画像を取得
-        //        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + ".jpg")
-        //        //一覧に画像表示
-        //        cell.collectionImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-        //        cell.collectionImageView.sd_setImage(with: imageRef)
-        //        cell.backgroundColor = .red
-        //        cell.collectionLabel.text = geocoder
         
         return cell
     }
@@ -138,6 +137,5 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let selectPrefecturesViewController = R.storyboard.selectPrefectures.instantiateInitialViewController() else { return }
         selectPrefecturesViewController.postArray = self.postList[indexPath.row]
         self.navigationController?.pushViewController(selectPrefecturesViewController, animated: true)
-        
     }
 }

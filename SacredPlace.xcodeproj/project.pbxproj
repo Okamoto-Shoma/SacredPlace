@@ -18,11 +18,12 @@
 		C10FCFDA249085F600DBC5E6 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10FCFD9249085F600DBC5E6 /* HomeCollectionViewCell.swift */; };
 		C10FCFDC2490A3F800DBC5E6 /* GetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10FCFDB2490A3F800DBC5E6 /* GetData.swift */; };
 		C10FCFDE2490B8F600DBC5E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C10FCFDD2490B8F500DBC5E6 /* GoogleService-Info.plist */; };
-		C112D3592480887F00EACCE0 /* NewSpots.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C112D3582480887F00EACCE0 /* NewSpots.storyboard */; };
 		C112D35B2480902800EACCE0 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C112D35A2480902800EACCE0 /* Setting.storyboard */; };
 		C112D35D24809A4C00EACCE0 /* SelectPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C112D35C24809A4C00EACCE0 /* SelectPhoto.storyboard */; };
 		C112D35F24809A5A00EACCE0 /* SelectPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C112D35E24809A5A00EACCE0 /* SelectPhotoViewController.swift */; };
 		C112D3672480A62B00EACCE0 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = C112D3662480A62B00EACCE0 /* Const.swift */; };
+		C11DBEE7249737BD00D0FB3F /* RouteMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C11DBEE6249737BD00D0FB3F /* RouteMap.storyboard */; };
+		C11DBEE9249737E200D0FB3F /* RouteMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11DBEE8249737E200D0FB3F /* RouteMapViewController.swift */; };
 		C1641389247E49190080C54A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1641388247E49190080C54A /* AppDelegate.swift */; };
 		C164138B247E49190080C54A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C164138A247E49190080C54A /* SceneDelegate.swift */; };
 		C1641390247E49190080C54A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C164138E247E49190080C54A /* Main.storyboard */; };
@@ -35,7 +36,6 @@
 		C16413A6247E63A60080C54A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16413A5247E63A60080C54A /* HomeViewController.swift */; };
 		C16413AA247F3ADB0080C54A /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16413A9247F3ADB0080C54A /* CreateAccountViewController.swift */; };
 		C16413AC247F3AE10080C54A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16413AB247F3AE10080C54A /* SettingViewController.swift */; };
-		C16413AE247F3AF00080C54A /* NewSpotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16413AD247F3AF00080C54A /* NewSpotsViewController.swift */; };
 		C16413B0247F3B290080C54A /* SpotListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16413AF247F3B290080C54A /* SpotListsViewController.swift */; };
 		C16413B7247FD2690080C54A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C16413B6247FD2690080C54A /* Login.storyboard */; };
 		C16413B9247FD28A0080C54A /* CreateAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C16413B8247FD28A0080C54A /* CreateAccount.storyboard */; };
@@ -57,11 +57,12 @@
 		C10FCFD9249085F600DBC5E6 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		C10FCFDB2490A3F800DBC5E6 /* GetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetData.swift; sourceTree = "<group>"; };
 		C10FCFDD2490B8F500DBC5E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C112D3582480887F00EACCE0 /* NewSpots.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewSpots.storyboard; sourceTree = "<group>"; };
 		C112D35A2480902800EACCE0 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		C112D35C24809A4C00EACCE0 /* SelectPhoto.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectPhoto.storyboard; sourceTree = "<group>"; };
 		C112D35E24809A5A00EACCE0 /* SelectPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPhotoViewController.swift; sourceTree = "<group>"; };
 		C112D3662480A62B00EACCE0 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		C11DBEE6249737BD00D0FB3F /* RouteMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RouteMap.storyboard; sourceTree = "<group>"; };
+		C11DBEE8249737E200D0FB3F /* RouteMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapViewController.swift; sourceTree = "<group>"; };
 		C1641385247E49190080C54A /* SacredPlace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SacredPlace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1641388247E49190080C54A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C164138A247E49190080C54A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,7 +77,6 @@
 		C16413A5247E63A60080C54A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C16413A9247F3ADB0080C54A /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		C16413AB247F3AE10080C54A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		C16413AD247F3AF00080C54A /* NewSpotsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSpotsViewController.swift; sourceTree = "<group>"; };
 		C16413AF247F3B290080C54A /* SpotListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListsViewController.swift; sourceTree = "<group>"; };
 		C16413B6247FD2690080C54A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C16413B8247FD28A0080C54A /* CreateAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAccount.storyboard; sourceTree = "<group>"; };
@@ -118,6 +118,7 @@
 		C10FCFDF2490FD1E00DBC5E6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				C11DBEEA249737FB00D0FB3F /* RouteMap */,
 				C10D1BEC2491BC6000CB87E2 /* SelectPrefectures */,
 				C16413A5247E63A60080C54A /* HomeViewController.swift */,
 				C10FCFD9249085F600DBC5E6 /* HomeCollectionViewCell.swift */,
@@ -138,9 +139,7 @@
 		C112D3602480A34600EACCE0 /* NewSpotsRegistration */ = {
 			isa = PBXGroup;
 			children = (
-				C16413AD247F3AF00080C54A /* NewSpotsViewController.swift */,
 				C112D35E24809A5A00EACCE0 /* SelectPhotoViewController.swift */,
-				C112D3582480887F00EACCE0 /* NewSpots.storyboard */,
 				C112D35C24809A4C00EACCE0 /* SelectPhoto.storyboard */,
 			);
 			path = NewSpotsRegistration;
@@ -183,6 +182,15 @@
 				C164139F247E612F0080C54A /* Camera.storyboard */,
 			);
 			path = AR;
+			sourceTree = "<group>";
+		};
+		C11DBEEA249737FB00D0FB3F /* RouteMap */ = {
+			isa = PBXGroup;
+			children = (
+				C11DBEE6249737BD00D0FB3F /* RouteMap.storyboard */,
+				C11DBEE8249737E200D0FB3F /* RouteMapViewController.swift */,
+			);
+			path = RouteMap;
 			sourceTree = "<group>";
 		};
 		C164137C247E49190080C54A = {
@@ -325,7 +333,6 @@
 				C16413B9247FD28A0080C54A /* CreateAccount.storyboard in Resources */,
 				C1641395247E491B0080C54A /* LaunchScreen.storyboard in Resources */,
 				C1641392247E491B0080C54A /* Assets.xcassets in Resources */,
-				C112D3592480887F00EACCE0 /* NewSpots.storyboard in Resources */,
 				C10E4EEF248519F400C10AE5 /* SpotsListTableViewCell.xib in Resources */,
 				C16413B7247FD2690080C54A /* Login.storyboard in Resources */,
 				C1641390247E49190080C54A /* Main.storyboard in Resources */,
@@ -335,6 +342,7 @@
 				C10D1BE92491BC2400CB87E2 /* SelectPrefectures.storyboard in Resources */,
 				C112D35B2480902800EACCE0 /* Setting.storyboard in Resources */,
 				C16413A0247E612F0080C54A /* Camera.storyboard in Resources */,
+				C11DBEE7249737BD00D0FB3F /* RouteMap.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,12 +420,12 @@
 				C10D1BEB2491BC3E00CB87E2 /* SelectPrefecturesViewController.swift in Sources */,
 				C186B47F2488BE85001F0F7F /* R.generated.swift in Sources */,
 				C16413A6247E63A60080C54A /* HomeViewController.swift in Sources */,
-				C16413AE247F3AF00080C54A /* NewSpotsViewController.swift in Sources */,
 				C16413AC247F3AE10080C54A /* SettingViewController.swift in Sources */,
 				C16413A2247E61BA0080C54A /* TabBarController.swift in Sources */,
 				C10FCFDA249085F600DBC5E6 /* HomeCollectionViewCell.swift in Sources */,
 				C10E4EEB2484E47A00C10AE5 /* PostData.swift in Sources */,
 				C112D3672480A62B00EACCE0 /* Const.swift in Sources */,
+				C11DBEE9249737E200D0FB3F /* RouteMapViewController.swift in Sources */,
 				C16413A4247E63970080C54A /* CameraViewController.swift in Sources */,
 				C1641389247E49190080C54A /* AppDelegate.swift in Sources */,
 				C16413B0247F3B290080C54A /* SpotListsViewController.swift in Sources */,

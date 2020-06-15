@@ -47,8 +47,9 @@ extension SelectPhotoViewController: UIImagePickerControllerDelegate, UINavigati
         guard let image = info[.originalImage] as? UIImage, let cameraViewController = R.storyboard.camera.instantiateInitialViewController() else { return }
         //画像確認画面に遷移
         cameraViewController.image = image
+        cameraViewController.flag = true
         picker.dismiss(animated: true, completion: nil)
-        self.present(cameraViewController, animated: true, completion: nil)
+        self.present(cameraViewController, animated: true)
         self.tabBarController?.selectedIndex = 0
     }
     

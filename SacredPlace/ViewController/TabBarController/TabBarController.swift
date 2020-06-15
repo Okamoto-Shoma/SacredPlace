@@ -23,6 +23,8 @@ class TabBarController: UITabBarController {
         self.tabBar.tintColor = UIColor(red: 1.0, green: 0.44, blue: 0.11, alpha: 1.0)
         //タブバーの背景色
         self.tabBar.barTintColor = .black
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,24 +38,11 @@ class TabBarController: UITabBarController {
             self.present(loginViewController, animated: true, completion: nil)
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 //MARK: - UITabBarControllerDelegate
 
 extension TabBarController: UITabBarControllerDelegate {
-    
-
 }
 
 //MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate

@@ -18,7 +18,7 @@
                         <viewLayoutGuide key="safeArea" id="ymW-mI-Su8"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="スポット登録" image="plus" catalog="system" id="qer-tF-hS3"/>
-                    <navigationItem key="navigationItem" title="スポット登録" id="wyA-wG-ARo"/>
+                    <navigationItem key="navigationItem" id="wyA-wG-ARo"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P8O-kF-YoX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

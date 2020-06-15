@@ -38,8 +38,11 @@ class SpotListsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self
+        self.navigationController?.navigationBar.barTintColor = .black
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -151,9 +154,9 @@ extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
         let targetLocation = CLLocation(latitude: targetLatitude, longitude: targetLongitude)
         // 距離
         let distance = baseLocation.distance(from: targetLocation)
-        cell.distance = distance
+        let meter = Int(distance * 1.09361)
+        cell.distance = meter
         //FirebaseStorageから画像を取得
-        //let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + ".jpg")
         let imageRef = self.imageArray.child(postData.id + ".jpg")
         //一覧に画像表示
         cell.postImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
@@ -170,7 +173,7 @@ extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.buttonTapAction = {
                 guard let cameraViewController = R.storyboard.camera.instantiateInitialViewController() else { return }
                 cameraViewController.image = image
-                self.present(cameraViewController, animated: true, completion: nil)
+                self.present(cameraViewController, animated: true)
                 print("DEBUG_PRINT: 撮影ボタンが押されました。")
             }
         }

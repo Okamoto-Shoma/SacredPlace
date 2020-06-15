@@ -16,7 +16,7 @@ class SpotsListTableViewCell: UITableViewCell {
     var buttonTapAction: (() -> Void)?
     var title: String = ""
     var geocoder: String = ""
-    var distance: Double?
+    var distance: Int?
     
     //MARK: - Outlet
     
@@ -38,7 +38,7 @@ class SpotsListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
         self.captionLabel.text = self.title
         self.geocoderLabel.text = self.geocoder
-        self.distanceLabel.text = "現在地からの距離：\(String(describing: self.distance!))"
+        self.distanceLabel.text = "現在地から：\(String(describing: self.distance!))m"
         
     }
     

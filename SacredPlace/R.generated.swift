@@ -127,8 +127,8 @@ struct R: Rswift.Validatable {
     static let login = _R.storyboard.login()
     /// Storyboard `Main`.
     static let main = _R.storyboard.main()
-    /// Storyboard `NewSpots`.
-    static let newSpots = _R.storyboard.newSpots()
+    /// Storyboard `RouteMap`.
+    static let routeMap = _R.storyboard.routeMap()
     /// Storyboard `SelectPhoto`.
     static let selectPhoto = _R.storyboard.selectPhoto()
     /// Storyboard `SelectPrefectures`.
@@ -181,9 +181,9 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIStoryboard(name: "NewSpots", bundle: ...)`
-    static func newSpots(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.newSpots)
+    /// `UIStoryboard(name: "RouteMap", bundle: ...)`
+    static func routeMap(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.routeMap)
     }
     #endif
 
@@ -229,6 +229,30 @@ struct R: Rswift.Validatable {
       let fileResource = R.file.googleServiceInfoPlist
       return fileResource.bundle.url(forResource: fileResource)
     }
+
+    fileprivate init() {}
+  }
+
+  /// This `R.image` struct is generated, and contains static references to 2 images.
+  struct image {
+    /// Image `download_camera`.
+    static let download_camera = Rswift.ImageResource(bundle: R.hostingBundle, name: "download_camera")
+    /// Image `shutter`.
+    static let shutter = Rswift.ImageResource(bundle: R.hostingBundle, name: "shutter")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "download_camera", bundle: ..., traitCollection: ...)`
+    static func download_camera(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.download_camera, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "shutter", bundle: ..., traitCollection: ...)`
+    static func shutter(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.shutter, compatibleWith: traitCollection)
+    }
+    #endif
 
     fileprivate init() {}
   }
@@ -312,13 +336,20 @@ struct R: Rswift.Validatable {
 struct _R: Rswift.Validatable {
   static func validate() throws {
     #if os(iOS) || os(tvOS)
+    try nib.validate()
+    #endif
+    #if os(iOS) || os(tvOS)
     try storyboard.validate()
     #endif
   }
 
   #if os(iOS) || os(tvOS)
-  struct nib {
-    struct _SpotsListTableViewCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+  struct nib: Rswift.Validatable {
+    static func validate() throws {
+      try _SpotsListTableViewCell.validate()
+    }
+
+    struct _SpotsListTableViewCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
       typealias ReusableType = SpotsListTableViewCell
 
       let bundle = R.hostingBundle
@@ -327,6 +358,12 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SpotsListTableViewCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SpotsListTableViewCell
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "download_camera", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'download_camera' is used in nib 'SpotsListTableViewCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
       }
 
       fileprivate init() {}
@@ -358,7 +395,7 @@ struct _R: Rswift.Validatable {
       try main.validate()
       #endif
       #if os(iOS) || os(tvOS)
-      try newSpots.validate()
+      try routeMap.validate()
       #endif
       #if os(iOS) || os(tvOS)
       try selectPhoto.validate()
@@ -387,6 +424,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
+        if UIKit.UIImage(named: "shutter", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shutter' is used in storyboard 'Camera', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.camera().camera() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'camera' could not be loaded from storyboard 'Camera' as 'CameraViewController'.") }
@@ -500,21 +538,21 @@ struct _R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    struct newSpots: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = NewSpotsViewController
+    struct routeMap: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = RouteMapViewController
 
       let bundle = R.hostingBundle
-      let name = "NewSpots"
-      let newSpots = StoryboardViewControllerResource<NewSpotsViewController>(identifier: "NewSpots")
+      let name = "RouteMap"
+      let routeMap = StoryboardViewControllerResource<RouteMapViewController>(identifier: "RouteMap")
 
-      func newSpots(_: Void = ()) -> NewSpotsViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: newSpots)
+      func routeMap(_: Void = ()) -> RouteMapViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: routeMap)
       }
 
       static func validate() throws {
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
-        if _R.storyboard.newSpots().newSpots() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'newSpots' could not be loaded from storyboard 'NewSpots' as 'NewSpotsViewController'.") }
+        if _R.storyboard.routeMap().routeMap() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'routeMap' could not be loaded from storyboard 'RouteMap' as 'RouteMapViewController'.") }
       }
 
       fileprivate init() {}
