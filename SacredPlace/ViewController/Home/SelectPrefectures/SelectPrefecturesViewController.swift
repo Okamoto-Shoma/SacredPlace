@@ -71,9 +71,10 @@ extension SelectPrefecturesViewController: UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let postData = self.postArray[indexPath.row]
-        guard let routeMapViewController = R.storyboard.routeMap.instantiateInitialViewController(), let latitude = postData.location?.latitude, let longitude = postData.location?.longitude else { return }
+        guard let routeMapViewController = R.storyboard.routeMap.instantiateInitialViewController(), let caption = postData.caption, let latitude = postData.location?.latitude, let longitude = postData.location?.longitude else { return }
         routeMapViewController.latitude = latitude
         routeMapViewController.longitude = longitude
+        routeMapViewController.caption = caption
         self.navigationController?.pushViewController(routeMapViewController, animated: true)
         
     }
