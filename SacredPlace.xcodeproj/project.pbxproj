@@ -20,6 +20,8 @@
 		C10FCFDE2490B8F600DBC5E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C10FCFDD2490B8F500DBC5E6 /* GoogleService-Info.plist */; };
 		C11042BA2499D8F500DF8CE9 /* ChanegeAccountName.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C11042B92499D8F500DF8CE9 /* ChanegeAccountName.storyboard */; };
 		C11042BC2499D90800DF8CE9 /* ChangeAccountNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11042BB2499D90800DF8CE9 /* ChangeAccountNameViewController.swift */; };
+		C112A327249B071000EA74DF /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C112A325249B071000EA74DF /* HomeCollectionViewCell.xib */; };
+		C112A329249B098A00EA74DF /* SelectPrefecturesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C112A328249B098A00EA74DF /* SelectPrefecturesCollectionViewCell.xib */; };
 		C112D35B2480902800EACCE0 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C112D35A2480902800EACCE0 /* Setting.storyboard */; };
 		C112D35D24809A4C00EACCE0 /* SelectPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C112D35C24809A4C00EACCE0 /* SelectPhoto.storyboard */; };
 		C112D35F24809A5A00EACCE0 /* SelectPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C112D35E24809A5A00EACCE0 /* SelectPhotoViewController.swift */; };
@@ -61,6 +63,8 @@
 		C10FCFDD2490B8F500DBC5E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C11042B92499D8F500DF8CE9 /* ChanegeAccountName.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChanegeAccountName.storyboard; sourceTree = "<group>"; };
 		C11042BB2499D90800DF8CE9 /* ChangeAccountNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAccountNameViewController.swift; sourceTree = "<group>"; };
+		C112A325249B071000EA74DF /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		C112A328249B098A00EA74DF /* SelectPrefecturesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectPrefecturesCollectionViewCell.xib; sourceTree = "<group>"; };
 		C112D35A2480902800EACCE0 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		C112D35C24809A4C00EACCE0 /* SelectPhoto.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectPhoto.storyboard; sourceTree = "<group>"; };
 		C112D35E24809A5A00EACCE0 /* SelectPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPhotoViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 				C10D1BE82491BC2400CB87E2 /* SelectPrefectures.storyboard */,
 				C10D1BEA2491BC3E00CB87E2 /* SelectPrefecturesViewController.swift */,
 				C10D1BEF2491CCEC00CB87E2 /* SelectPrefecturesCollectionViewCell.swift */,
+				C112A328249B098A00EA74DF /* SelectPrefecturesCollectionViewCell.xib */,
 			);
 			path = SelectPrefectures;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 				C10D1BEC2491BC6000CB87E2 /* SelectPrefectures */,
 				C16413A5247E63A60080C54A /* HomeViewController.swift */,
 				C10FCFD9249085F600DBC5E6 /* HomeCollectionViewCell.swift */,
+				C112A325249B071000EA74DF /* HomeCollectionViewCell.xib */,
 				C164139D247E611F0080C54A /* Home.storyboard */,
 			);
 			path = Home;
@@ -354,10 +360,12 @@
 				C10E4EE32484DB4C00C10AE5 /* SpotsList.storyboard in Resources */,
 				C164139E247E611F0080C54A /* Home.storyboard in Resources */,
 				C112D35D24809A4C00EACCE0 /* SelectPhoto.storyboard in Resources */,
+				C112A327249B071000EA74DF /* HomeCollectionViewCell.xib in Resources */,
 				C10D1BE92491BC2400CB87E2 /* SelectPrefectures.storyboard in Resources */,
 				C112D35B2480902800EACCE0 /* Setting.storyboard in Resources */,
 				C16413A0247E612F0080C54A /* Camera.storyboard in Resources */,
 				C11DBEE7249737BD00D0FB3F /* RouteMap.storyboard in Resources */,
+				C112A329249B098A00EA74DF /* SelectPrefecturesCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

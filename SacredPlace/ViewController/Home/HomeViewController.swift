@@ -26,9 +26,10 @@ class HomeViewController: UIViewController {
             //レイアウト調整
             let layout = UICollectionViewFlowLayout()
             layout.sectionInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
-            layout.itemSize = CGSize(width: 172, height: 222)
+            layout.itemSize = CGSize(width: 174, height: 224)
             self.collectionView.collectionViewLayout = layout
             self.collectionView.backgroundColor = .black
+            self.collectionView.register(R.nib.homeCollectionViewCell)
         }
     }
     
@@ -128,17 +129,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     ///   - indexPath: IndexPath
     /// - Returns: cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.collectionViewCell.identifier, for: indexPath) as! HomeCollectionViewCell
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.homeCollectionViewCell, for: indexPath) as! HomeCollectionViewCell
         let countData = self.postList[indexPath.row].count
         cell.backgroundColor = .black
-        cell.collectionLabel.text = self.postList[indexPath.row].first?.geocoder
-        cell.collectionCountLabel.text = String(countData)
-        cell.collectionLabel.textColor = .white
-        cell.collectionCountLabel.textColor = .gray
+        cell.prefecturesLabel.text = self.postList[indexPath.row].first?.geocoder
+        cell.registrationCountLabel.text = String(countData)
+        cell.prefecturesLabel.textColor = .white
+        cell.registrationCountLabel.textColor = .gray
         //一覧に画像表示
-        cell.collectionImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        cell.ImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         if let image = self.images[indexPath.row] as? StorageReference {
-           cell.collectionImageView.sd_setImage(with: image)
+           cell.ImageView.sd_setImage(with: image)
         }
         return cell
     }

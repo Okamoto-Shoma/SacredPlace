@@ -27,10 +27,11 @@ class SelectPrefecturesViewController: UIViewController {
             //レイアウト調整
             let layout = UICollectionViewFlowLayout()
             layout.sectionInset = UIEdgeInsets(top: 50, left: 0, bottom: 4, right: 0)
-            layout.itemSize = CGSize(width: 180, height: 180)
+            layout.itemSize = CGSize(width: 174, height: 174)
             self.collectionView.collectionViewLayout = layout
             self.collectionView.backgroundColor = .black
             self.collectionView.contentOffset = CGPoint(x: 0, y: self.searchBarHeight)
+            self.collectionView.register(R.nib.selectPrefecturesCollectionViewCell)
         }
     }
     
@@ -42,6 +43,7 @@ class SelectPrefecturesViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.setupSearchBar()
         self.filtArray = self.postArray
+        self.view.backgroundColor = .black
         
     }
     
@@ -76,13 +78,13 @@ extension SelectPrefecturesViewController: UICollectionViewDelegate, UICollectio
     ///   - indexPath: IndexPath
     /// - Returns: cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.selectPrefectures, for: indexPath) as! SelectPrefecturesCollectionViewCell
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.selectPrefecturesCollectionViewCell, for: indexPath) as! SelectPrefecturesCollectionViewCell
         let postData = self.filtArray[indexPath.row]
         //FirebaseStorageから画像を取得
         let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + ".jpg")
         //一覧に画像表示
-        cell.collectionImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-        cell.collectionImageView.sd_setImage(with: imageRef)
+        cell.ImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        cell.ImageView.sd_setImage(with: imageRef)
         
         return cell
     }

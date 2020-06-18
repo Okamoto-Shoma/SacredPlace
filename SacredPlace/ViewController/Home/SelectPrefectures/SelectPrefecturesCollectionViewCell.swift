@@ -14,5 +14,5 @@ class SelectPrefecturesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var collectionLabel: UILabel!
     @IBOutlet weak var collectionDateLabel: UILabel!
-    @IBOutlet weak var collectionImageView: UIImageView!
+    @IBOutlet weak var ImageView: UIImageView!
 }

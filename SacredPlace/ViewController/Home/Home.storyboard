@@ -32,45 +32,8 @@
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="LCO-bK-PDP">
                                             <rect key="frame" x="0.0" y="0.0" width="172" height="222"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TSJ-0O-w0r">
-                                                    <rect key="frame" x="0.0" y="0.0" width="172" height="172"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="30"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijT-x3-VcQ">
-                                                    <rect key="frame" x="0.0" y="176" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yV0-kc-jcv">
-                                                    <rect key="frame" x="0.0" y="201" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ijT-x3-VcQ" firstAttribute="leading" secondItem="TSJ-0O-w0r" secondAttribute="leading" id="K5n-f5-Z3N"/>
-                                                <constraint firstItem="TSJ-0O-w0r" firstAttribute="leading" secondItem="LCO-bK-PDP" secondAttribute="leading" id="PlJ-wA-YDN"/>
-                                                <constraint firstItem="yV0-kc-jcv" firstAttribute="top" secondItem="ijT-x3-VcQ" secondAttribute="bottom" constant="4" id="Qhh-Uh-lM5"/>
-                                                <constraint firstItem="ijT-x3-VcQ" firstAttribute="top" secondItem="TSJ-0O-w0r" secondAttribute="bottom" constant="4" id="UCw-6E-2Jk"/>
-                                                <constraint firstItem="TSJ-0O-w0r" firstAttribute="top" secondItem="LCO-bK-PDP" secondAttribute="top" id="Xyy-Yc-96w"/>
-                                                <constraint firstAttribute="trailing" secondItem="TSJ-0O-w0r" secondAttribute="trailing" id="czf-vB-UKS"/>
-                                                <constraint firstItem="yV0-kc-jcv" firstAttribute="leading" secondItem="TSJ-0O-w0r" secondAttribute="leading" id="qbS-c5-7B0"/>
-                                                <constraint firstAttribute="bottom" secondItem="yV0-kc-jcv" secondAttribute="bottom" id="tUq-hi-HEP"/>
-                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="172" height="222"/>
-                                        <connections>
-                                            <outlet property="collectionCountLabel" destination="yV0-kc-jcv" id="QAg-zV-mGl"/>
-                                            <outlet property="collectionImageView" destination="TSJ-0O-w0r" id="FXD-0l-MEC"/>
-                                            <outlet property="collectionLabel" destination="ijT-x3-VcQ" id="apv-WB-6Pq"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

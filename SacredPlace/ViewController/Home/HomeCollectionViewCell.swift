@@ -12,7 +12,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Outlet
     
-    @IBOutlet weak var collectionLabel: UILabel!
-    @IBOutlet weak var collectionCountLabel: UILabel!
-    @IBOutlet weak var collectionImageView: UIImageView!
+    @IBOutlet weak var prefecturesLabel: UILabel!
+    @IBOutlet weak var registrationCountLabel: UILabel!
+    @IBOutlet weak var ImageView: UIImageView!
 }

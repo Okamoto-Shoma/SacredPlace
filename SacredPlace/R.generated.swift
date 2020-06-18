@@ -297,10 +297,30 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 3 nibs.
   struct nib {
+    /// Nib `HomeCollectionViewCell`.
+    static let homeCollectionViewCell = _R.nib._HomeCollectionViewCell()
+    /// Nib `SelectPrefecturesCollectionViewCell`.
+    static let selectPrefecturesCollectionViewCell = _R.nib._SelectPrefecturesCollectionViewCell()
     /// Nib `SpotsListTableViewCell`.
     static let spotsListTableViewCell = _R.nib._SpotsListTableViewCell()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "HomeCollectionViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.homeCollectionViewCell) instead")
+    static func homeCollectionViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.homeCollectionViewCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "SelectPrefecturesCollectionViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.selectPrefecturesCollectionViewCell) instead")
+    static func selectPrefecturesCollectionViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.selectPrefecturesCollectionViewCell)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "SpotsListTableViewCell", in: bundle)`
@@ -310,6 +330,14 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    static func homeCollectionViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> HomeCollectionViewCell? {
+      return R.nib.homeCollectionViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? HomeCollectionViewCell
+    }
+
+    static func selectPrefecturesCollectionViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SelectPrefecturesCollectionViewCell? {
+      return R.nib.selectPrefecturesCollectionViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SelectPrefecturesCollectionViewCell
+    }
+
     static func spotsListTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SpotsListTableViewCell? {
       return R.nib.spotsListTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SpotsListTableViewCell
     }
@@ -317,10 +345,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 3 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 5 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `CollectionViewCell`.
     static let collectionViewCell: Rswift.ReuseIdentifier<HomeCollectionViewCell> = Rswift.ReuseIdentifier(identifier: "CollectionViewCell")
+    /// Reuse identifier `HomeCollectionViewCell`.
+    static let homeCollectionViewCell: Rswift.ReuseIdentifier<HomeCollectionViewCell> = Rswift.ReuseIdentifier(identifier: "HomeCollectionViewCell")
+    /// Reuse identifier `SelectPrefecturesCollectionViewCell`.
+    static let selectPrefecturesCollectionViewCell: Rswift.ReuseIdentifier<SelectPrefecturesCollectionViewCell> = Rswift.ReuseIdentifier(identifier: "SelectPrefecturesCollectionViewCell")
     /// Reuse identifier `SelectPrefectures`.
     static let selectPrefectures: Rswift.ReuseIdentifier<SelectPrefecturesCollectionViewCell> = Rswift.ReuseIdentifier(identifier: "SelectPrefectures")
     /// Reuse identifier `SpotCells`.
@@ -356,6 +388,34 @@ struct _R: Rswift.Validatable {
   struct nib: Rswift.Validatable {
     static func validate() throws {
       try _SpotsListTableViewCell.validate()
+    }
+
+    struct _HomeCollectionViewCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = HomeCollectionViewCell
+
+      let bundle = R.hostingBundle
+      let identifier = "HomeCollectionViewCell"
+      let name = "HomeCollectionViewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> HomeCollectionViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? HomeCollectionViewCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _SelectPrefecturesCollectionViewCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = SelectPrefecturesCollectionViewCell
+
+      let bundle = R.hostingBundle
+      let identifier = "SelectPrefecturesCollectionViewCell"
+      let name = "SelectPrefecturesCollectionViewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SelectPrefecturesCollectionViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SelectPrefecturesCollectionViewCell
+      }
+
+      fileprivate init() {}
     }
 
     struct _SpotsListTableViewCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
