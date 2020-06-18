@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
     
     private var postArray: [PostData] = []
     private var postList: [[PostData]] = []
-
+    private var images: [Any?] = []
     private var listener: ListenerRegistration?
     
     //MARK: - Outlet
@@ -25,8 +25,8 @@ class HomeViewController: UIViewController {
             self.collectionView.dataSource = self
             //レイアウト調整
             let layout = UICollectionViewFlowLayout()
-            layout.sectionInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-            layout.itemSize = CGSize(width: 100, height: 100)
+            layout.sectionInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+            layout.itemSize = CGSize(width: 172, height: 222)
             self.collectionView.collectionViewLayout = layout
             self.collectionView.backgroundColor = .black
         }
@@ -43,6 +43,8 @@ class HomeViewController: UIViewController {
         self.loginCheck()
         self.navigationController?.navigationBar.barTintColor = .black
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        self.view.backgroundColor = .black
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +57,7 @@ class HomeViewController: UIViewController {
     //MARK: - PrivateMethod
     
     /// Firebaseからデータを取得
-    func loginCheck() {
+    private func loginCheck() {
         if Auth.auth().currentUser != nil {
             //ログイン済
             if self.listener == nil {
@@ -98,6 +100,10 @@ class HomeViewController: UIViewController {
                 self.postList.append(post)
             }
         }
+        self.images = self.postList.map {
+            guard let id = $0.first?.id else { return nil }
+            return Storage.storage().reference().child(Const.ImagePath).child(id + ".jpg")
+        }
         self.collectionView.reloadData()
     }
 }
@@ -123,9 +129,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     /// - Returns: cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.collectionViewCell.identifier, for: indexPath) as! HomeCollectionViewCell
-        cell.backgroundColor = .white
+        let countData = self.postList[indexPath.row].count
+        cell.backgroundColor = .black
         cell.collectionLabel.text = self.postList[indexPath.row].first?.geocoder
-        
+        cell.collectionCountLabel.text = String(countData)
+        cell.collectionLabel.textColor = .white
+        cell.collectionCountLabel.textColor = .gray
+        //一覧に画像表示
+        cell.collectionImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        if let image = self.images[indexPath.row] as? StorageReference {
+           cell.collectionImageView.sd_setImage(with: image)
+        }
         return cell
     }
     

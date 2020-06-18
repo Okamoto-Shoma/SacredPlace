@@ -24,7 +24,6 @@ class TabBarController: UITabBarController {
         //タブバーの背景色
         self.tabBar.barTintColor = .black
         
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {

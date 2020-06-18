@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpi-3C-dIG">
-                                <rect key="frame" x="136" y="180" width="102" height="36"/>
+                                <rect key="frame" x="136" y="219" width="102" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="ログアウト">
@@ -24,6 +24,16 @@
                                 </state>
                                 <connections>
                                     <action selector="handleLogout:" destination="Cm7-Eh-CZ6" eventType="touchUpInside" id="qPS-J3-0si"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETD-cF-tQV">
+                                <rect key="frame" x="114" y="121" width="147" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="アカウント名変更">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleNameChanege:" destination="Cm7-Eh-CZ6" eventType="touchUpInside" id="fpJ-Ex-laE"/>
                                 </connections>
                             </button>
                         </subviews>

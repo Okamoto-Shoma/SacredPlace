@@ -24,6 +24,8 @@ class SettingViewController: UIViewController {
     
     //MARK: - Action
     
+    /// ログアウトボタン
+    /// - Parameter sender: UIButton
     @IBAction func handleLogout(_ sender: UIButton) {
         //ログアウトする
         try? Auth.auth().signOut()
@@ -32,5 +34,12 @@ class SettingViewController: UIViewController {
         present(loginViewController, animated: true, completion: nil)
         //ログイン画面から戻っていた問いのためにホーム画面を選択している状態
         tabBarController?.selectedIndex = 0
+    }
+    
+    /// アカウント変更ボタン
+    /// - Parameter sender: UIButton
+    @IBAction func handleNameChanege(_ sender: UIButton) {
+        guard let changeAccountNameViewController = R.storyboard.chanegeAccountName.instantiateInitialViewController() else { return }
+        self.present(changeAccountNameViewController, animated: true)
     }
 }

@@ -110,7 +110,7 @@ class SpotListsViewController: UIViewController {
         let baseLocation = CLLocation(latitude: baseLatitude, longitude: baseLongitude)
         
         self.postDataReceived = self.postArray.filter({
-            baseLocation.distance(from: CLLocation(latitude: $0.location?.latitude ?? 0, longitude: $0.location?.longitude ?? 0)) < 20
+            baseLocation.distance(from: CLLocation(latitude: $0.location?.latitude ?? 0, longitude: $0.location?.longitude ?? 0)) < 10
         })
         self.tableView.reloadData()
         print("DEBUG_PRINT: \(self.postDataReceived)")

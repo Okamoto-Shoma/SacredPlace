@@ -18,6 +18,8 @@
 		C10FCFDA249085F600DBC5E6 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10FCFD9249085F600DBC5E6 /* HomeCollectionViewCell.swift */; };
 		C10FCFDC2490A3F800DBC5E6 /* GetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10FCFDB2490A3F800DBC5E6 /* GetData.swift */; };
 		C10FCFDE2490B8F600DBC5E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C10FCFDD2490B8F500DBC5E6 /* GoogleService-Info.plist */; };
+		C11042BA2499D8F500DF8CE9 /* ChanegeAccountName.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C11042B92499D8F500DF8CE9 /* ChanegeAccountName.storyboard */; };
+		C11042BC2499D90800DF8CE9 /* ChangeAccountNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11042BB2499D90800DF8CE9 /* ChangeAccountNameViewController.swift */; };
 		C112D35B2480902800EACCE0 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C112D35A2480902800EACCE0 /* Setting.storyboard */; };
 		C112D35D24809A4C00EACCE0 /* SelectPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C112D35C24809A4C00EACCE0 /* SelectPhoto.storyboard */; };
 		C112D35F24809A5A00EACCE0 /* SelectPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C112D35E24809A5A00EACCE0 /* SelectPhotoViewController.swift */; };
@@ -57,6 +59,8 @@
 		C10FCFD9249085F600DBC5E6 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		C10FCFDB2490A3F800DBC5E6 /* GetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetData.swift; sourceTree = "<group>"; };
 		C10FCFDD2490B8F500DBC5E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C11042B92499D8F500DF8CE9 /* ChanegeAccountName.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChanegeAccountName.storyboard; sourceTree = "<group>"; };
+		C11042BB2499D90800DF8CE9 /* ChangeAccountNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAccountNameViewController.swift; sourceTree = "<group>"; };
 		C112D35A2480902800EACCE0 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		C112D35C24809A4C00EACCE0 /* SelectPhoto.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectPhoto.storyboard; sourceTree = "<group>"; };
 		C112D35E24809A5A00EACCE0 /* SelectPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPhotoViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +140,15 @@
 			path = CreateAccount;
 			sourceTree = "<group>";
 		};
+		C11042BD2499DA2C00DF8CE9 /* ChangeAccountName */ = {
+			isa = PBXGroup;
+			children = (
+				C11042B92499D8F500DF8CE9 /* ChanegeAccountName.storyboard */,
+				C11042BB2499D90800DF8CE9 /* ChangeAccountNameViewController.swift */,
+			);
+			path = ChangeAccountName;
+			sourceTree = "<group>";
+		};
 		C112D3602480A34600EACCE0 /* NewSpotsRegistration */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +161,7 @@
 		C112D3612480A37D00EACCE0 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				C11042BD2499DA2C00DF8CE9 /* ChangeAccountName */,
 				C16413AB247F3AE10080C54A /* SettingViewController.swift */,
 				C112D35A2480902800EACCE0 /* Setting.storyboard */,
 			);
@@ -332,6 +346,7 @@
 				C10FCFDE2490B8F600DBC5E6 /* GoogleService-Info.plist in Resources */,
 				C16413B9247FD28A0080C54A /* CreateAccount.storyboard in Resources */,
 				C1641395247E491B0080C54A /* LaunchScreen.storyboard in Resources */,
+				C11042BA2499D8F500DF8CE9 /* ChanegeAccountName.storyboard in Resources */,
 				C1641392247E491B0080C54A /* Assets.xcassets in Resources */,
 				C10E4EEF248519F400C10AE5 /* SpotsListTableViewCell.xib in Resources */,
 				C16413B7247FD2690080C54A /* Login.storyboard in Resources */,
@@ -433,6 +448,7 @@
 				C16413BB248006860080C54A /* LoginViewController.swift in Sources */,
 				C164138B247E49190080C54A /* SceneDelegate.swift in Sources */,
 				C10D1BF02491CCEC00CB87E2 /* SelectPrefecturesCollectionViewCell.swift in Sources */,
+				C11042BC2499D90800DF8CE9 /* ChangeAccountNameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

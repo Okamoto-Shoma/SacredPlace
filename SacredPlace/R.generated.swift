@@ -113,10 +113,12 @@ struct R: Rswift.Validatable {
   #endif
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 11 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 12 storyboards.
   struct storyboard {
     /// Storyboard `Camera`.
     static let camera = _R.storyboard.camera()
+    /// Storyboard `ChanegeAccountName`.
+    static let chanegeAccountName = _R.storyboard.chanegeAccountName()
     /// Storyboard `CreateAccount`.
     static let createAccount = _R.storyboard.createAccount()
     /// Storyboard `Home`.
@@ -142,6 +144,13 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "Camera", bundle: ...)`
     static func camera(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.camera)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "ChanegeAccountName", bundle: ...)`
+    static func chanegeAccountName(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.chanegeAccountName)
     }
     #endif
 
@@ -380,6 +389,9 @@ struct _R: Rswift.Validatable {
       try camera.validate()
       #endif
       #if os(iOS) || os(tvOS)
+      try chanegeAccountName.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
       try createAccount.validate()
       #endif
       #if os(iOS) || os(tvOS)
@@ -428,6 +440,28 @@ struct _R: Rswift.Validatable {
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.camera().camera() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'camera' could not be loaded from storyboard 'Camera' as 'CameraViewController'.") }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    struct chanegeAccountName: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = ChangeAccountNameViewController
+
+      let bundle = R.hostingBundle
+      let changeAccountName = StoryboardViewControllerResource<ChangeAccountNameViewController>(identifier: "ChangeAccountName")
+      let name = "ChanegeAccountName"
+
+      func changeAccountName(_: Void = ()) -> ChangeAccountNameViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: changeAccountName)
+      }
+
+      static func validate() throws {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+        if _R.storyboard.chanegeAccountName().changeAccountName() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'changeAccountName' could not be loaded from storyboard 'ChanegeAccountName' as 'ChangeAccountNameViewController'.") }
       }
 
       fileprivate init() {}

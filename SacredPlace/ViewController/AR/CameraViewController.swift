@@ -75,7 +75,7 @@ class CameraViewController: UIViewController {
                 message: "保存する場合は登録名を入力して下さい",
                 preferredStyle: UIAlertController.Style.alert
             )
-            alert.addTextField(configurationHandler: {(textField: UITextField!) in
+            alert.addTextField(configurationHandler: { (textField: UITextField!) in
                 alertTextField = textField
             })
             

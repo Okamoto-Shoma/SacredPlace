@@ -13,5 +13,6 @@ class SelectPrefecturesCollectionViewCell: UICollectionViewCell {
     //MARK: - Outlet
     
     @IBOutlet weak var collectionLabel: UILabel!
+    @IBOutlet weak var collectionDateLabel: UILabel!
     @IBOutlet weak var collectionImageView: UIImageView!
 }
