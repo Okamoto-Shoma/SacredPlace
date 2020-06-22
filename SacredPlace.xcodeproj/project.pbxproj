@@ -16,7 +16,6 @@
 		C10E4EEE248519F400C10AE5 /* SpotsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10E4EEC248519F400C10AE5 /* SpotsListTableViewCell.swift */; };
 		C10E4EEF248519F400C10AE5 /* SpotsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10E4EED248519F400C10AE5 /* SpotsListTableViewCell.xib */; };
 		C10FCFDA249085F600DBC5E6 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10FCFD9249085F600DBC5E6 /* HomeCollectionViewCell.swift */; };
-		C10FCFDC2490A3F800DBC5E6 /* GetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10FCFDB2490A3F800DBC5E6 /* GetData.swift */; };
 		C10FCFDE2490B8F600DBC5E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C10FCFDD2490B8F500DBC5E6 /* GoogleService-Info.plist */; };
 		C11042BA2499D8F500DF8CE9 /* ChanegeAccountName.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C11042B92499D8F500DF8CE9 /* ChanegeAccountName.storyboard */; };
 		C11042BC2499D90800DF8CE9 /* ChangeAccountNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11042BB2499D90800DF8CE9 /* ChangeAccountNameViewController.swift */; };
@@ -59,7 +58,6 @@
 		C10E4EEC248519F400C10AE5 /* SpotsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotsListTableViewCell.swift; sourceTree = "<group>"; };
 		C10E4EED248519F400C10AE5 /* SpotsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotsListTableViewCell.xib; sourceTree = "<group>"; };
 		C10FCFD9249085F600DBC5E6 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
-		C10FCFDB2490A3F800DBC5E6 /* GetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetData.swift; sourceTree = "<group>"; };
 		C10FCFDD2490B8F500DBC5E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C11042B92499D8F500DF8CE9 /* ChanegeAccountName.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChanegeAccountName.storyboard; sourceTree = "<group>"; };
 		C11042BB2499D90800DF8CE9 /* ChangeAccountNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAccountNameViewController.swift; sourceTree = "<group>"; };
@@ -116,9 +114,9 @@
 		C10D1BEC2491BC6000CB87E2 /* SelectPrefectures */ = {
 			isa = PBXGroup;
 			children = (
-				C10D1BE82491BC2400CB87E2 /* SelectPrefectures.storyboard */,
 				C10D1BEA2491BC3E00CB87E2 /* SelectPrefecturesViewController.swift */,
 				C10D1BEF2491CCEC00CB87E2 /* SelectPrefecturesCollectionViewCell.swift */,
+				C10D1BE82491BC2400CB87E2 /* SelectPrefectures.storyboard */,
 				C112A328249B098A00EA74DF /* SelectPrefecturesCollectionViewCell.xib */,
 			);
 			path = SelectPrefectures;
@@ -207,8 +205,8 @@
 		C11DBEEA249737FB00D0FB3F /* RouteMap */ = {
 			isa = PBXGroup;
 			children = (
-				C11DBEE6249737BD00D0FB3F /* RouteMap.storyboard */,
 				C11DBEE8249737E200D0FB3F /* RouteMapViewController.swift */,
+				C11DBEE6249737BD00D0FB3F /* RouteMap.storyboard */,
 			);
 			path = RouteMap;
 			sourceTree = "<group>";
@@ -239,7 +237,6 @@
 				C10E4EEA2484E47A00C10AE5 /* PostData.swift */,
 				C164138A247E49190080C54A /* SceneDelegate.swift */,
 				C186B47E2488BE85001F0F7F /* R.generated.swift */,
-				C10FCFDB2490A3F800DBC5E6 /* GetData.swift */,
 				C16413B3247F3B580080C54A /* ViewController */,
 				C164139C247E55CB0080C54A /* Storyboard */,
 				C1641391247E491B0080C54A /* Assets.xcassets */,
@@ -438,7 +435,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C16413AA247F3ADB0080C54A /* CreateAccountViewController.swift in Sources */,
-				C10FCFDC2490A3F800DBC5E6 /* GetData.swift in Sources */,
 				C10E4EEE248519F400C10AE5 /* SpotsListTableViewCell.swift in Sources */,
 				C10D1BEB2491BC3E00CB87E2 /* SelectPrefecturesViewController.swift in Sources */,
 				C186B47F2488BE85001F0F7F /* R.generated.swift in Sources */,

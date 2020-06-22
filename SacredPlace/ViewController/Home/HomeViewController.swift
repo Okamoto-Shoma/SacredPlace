@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
             //レイアウト調整
             let layout = UICollectionViewFlowLayout()
             layout.sectionInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
-            layout.itemSize = CGSize(width: 174, height: 224)
+            layout.itemSize = CGSize(width: 182, height: 232)
             self.collectionView.collectionViewLayout = layout
             self.collectionView.backgroundColor = .black
             self.collectionView.register(R.nib.homeCollectionViewCell)
@@ -75,7 +75,7 @@ class HomeViewController: UIViewController {
                         let postData = PostData(document: document)
                         return postData
                     }
-                    self.filtDate()
+                    self.filtData()
                 }
             } else {
                 //未ログイン
@@ -91,11 +91,11 @@ class HomeViewController: UIViewController {
     }
     
     /// データをフィルター処理
-    private func filtDate() {
+    private func filtData() {
         //フィルター処理
-        let filt: [String?] = self.postArray.map { $0.geocoder }
+        let filtGeocoder: [String?] = self.postArray.map { $0.geocoder }
         self.postList.removeAll()
-        if let filtArray = NSOrderedSet(array: filt as [Any]).array as? [String] {
+        if let filtArray = NSOrderedSet(array: filtGeocoder as [Any]).array as? [String] {
             for position in filtArray {
                 let post = self.postArray.filter { $0.geocoder == position }
                 self.postList.append(post)
@@ -129,9 +129,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     ///   - indexPath: IndexPath
     /// - Returns: cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.homeCollectionViewCell, for: indexPath) as! HomeCollectionViewCell
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.homeCollectionViewCell, for: indexPath)!
         let countData = self.postList[indexPath.row].count
-        cell.backgroundColor = .black
+        //cell.backgroundColor = .black
         cell.prefecturesLabel.text = self.postList[indexPath.row].first?.geocoder
         cell.registrationCountLabel.text = String(countData)
         cell.prefecturesLabel.textColor = .white
@@ -141,6 +141,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if let image = self.images[indexPath.row] as? StorageReference {
            cell.ImageView.sd_setImage(with: image)
         }
+        
         return cell
     }
     

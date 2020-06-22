@@ -13,18 +13,11 @@ import FirebaseUI
 
 class SpotsListTableViewCell: UITableViewCell {
     
-    var buttonTapAction: (() -> Void)?
-    var title: String = ""
-    var geocoder: String = ""
-    var distance: Int?
-    
     //MARK: - Outlet
     
     @IBOutlet weak var postImageView: UIImageView!
-    @IBOutlet private var captionLabel: UILabel!
-    @IBOutlet private var distanceLabel: UILabel!
-    @IBOutlet private var geocoderLabel: UILabel!
-    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     //MARK: - LifeCycle
     
@@ -36,15 +29,5 @@ class SpotsListTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
-        self.captionLabel.text = self.title
-        self.geocoderLabel.text = self.geocoder
-        self.distanceLabel.text = "現在地から：\(String(describing: self.distance!))m"
-        
-    }
-    
-    //MARK: - Action
-    
-    @IBAction func handleCameraButton(_ sender: UIButton) {
-        buttonTapAction?()
     }
 }

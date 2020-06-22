@@ -16,7 +16,9 @@ class SelectPrefecturesViewController: UIViewController {
     private let searchBarHeight: CGFloat = 44
 
     var postArray: [PostData] = []
-    var filtArray: [PostData] = []
+    private var filtArray: [PostData] = []
+    private var images: [Any?] = []
+
     
     //MARK: - outlet
     
@@ -27,7 +29,7 @@ class SelectPrefecturesViewController: UIViewController {
             //レイアウト調整
             let layout = UICollectionViewFlowLayout()
             layout.sectionInset = UIEdgeInsets(top: 50, left: 0, bottom: 4, right: 0)
-            layout.itemSize = CGSize(width: 174, height: 174)
+            layout.itemSize = CGSize(width: 182, height: 232)
             self.collectionView.collectionViewLayout = layout
             self.collectionView.backgroundColor = .black
             self.collectionView.contentOffset = CGPoint(x: 0, y: self.searchBarHeight)
@@ -45,6 +47,7 @@ class SelectPrefecturesViewController: UIViewController {
         self.filtArray = self.postArray
         self.view.backgroundColor = .black
         
+        self.getImage()
     }
     
     //MARK: - PrivateMethod
@@ -56,6 +59,15 @@ class SelectPrefecturesViewController: UIViewController {
         self.collectionView.addSubview(self.searchBar)
         self.collectionView.backgroundColor = .black
         self.collectionView.tintColor = .black
+    }
+    
+    /// 画像取得設定
+    private func getImage() {
+        self.images = self.postArray.map {
+            let id = $0.id
+            return Storage.storage().reference().child(Const.ImagePath).child(id + ".jpg")
+        }
+        self.collectionView.reloadData()
     }
 }
 
@@ -78,13 +90,25 @@ extension SelectPrefecturesViewController: UICollectionViewDelegate, UICollectio
     ///   - indexPath: IndexPath
     /// - Returns: cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.selectPrefecturesCollectionViewCell, for: indexPath) as! SelectPrefecturesCollectionViewCell
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.selectPrefecturesCollectionViewCell, for: indexPath)!
         let postData = self.filtArray[indexPath.row]
-        //FirebaseStorageから画像を取得
-        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + ".jpg")
-        //一覧に画像表示
+        //文字の色設定
+        cell.captionLabel.textColor = .white
+        cell.registrationDateLabel.textColor = .gray
+        //表示設定
+        cell.captionLabel.text = postData.caption
+        cell.registrationDateLabel.text = ""
+        if let date = postData.date {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            let dateString = formatter.string(from: date)
+            cell.registrationDateLabel.text = dateString
+        }
+        //画像表示
         cell.ImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-        cell.ImageView.sd_setImage(with: imageRef)
+        if let image = self.images[indexPath.row] as? StorageReference {
+           cell.ImageView.sd_setImage(with: image)
+        }
         
         return cell
     }
@@ -110,8 +134,7 @@ extension SelectPrefecturesViewController: UISearchBarDelegate {
     /// 検索ボタン押下時
     /// - Parameter searchBar: UISearchBar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let filt = self.postArray.filter { ($0.caption?.contains(self.searchBar.text!) ?? false) }
-        self.filtArray = filt
+        self.filtArray = self.postArray.filter { ($0.caption?.contains(self.searchBar.text!) ?? false) }
         self.collectionView.reloadData()
     }
     

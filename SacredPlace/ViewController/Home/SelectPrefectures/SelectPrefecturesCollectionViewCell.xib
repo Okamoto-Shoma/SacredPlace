@@ -10,28 +10,50 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SelectPrefecturesCollectionViewCell" id="4rF-g9-SQH" customClass="SelectPrefecturesCollectionViewCell" customModule="SacredPlace" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="172" height="172"/>
+            <rect key="frame" x="0.0" y="0.0" width="182" height="232"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RU4-89-1iT">
-                <rect key="frame" x="0.0" y="0.0" width="172" height="172"/>
+                <rect key="frame" x="0.0" y="0.0" width="182" height="232"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ha1-hG-s0N">
-                        <rect key="frame" x="0.0" y="0.0" width="172" height="172"/>
+                        <rect key="frame" x="0.0" y="0.0" width="182" height="182"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="182" id="LpJ-MR-Ab6"/>
+                            <constraint firstAttribute="height" constant="182" id="MY9-F1-dEf"/>
+                        </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8f-la-kxe">
+                        <rect key="frame" x="0.0" y="186" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQt-sY-mF3">
+                        <rect key="frame" x="0.0" y="211" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="ha1-hG-s0N" secondAttribute="trailing" id="4FB-8Z-7h5"/>
+                    <constraint firstAttribute="bottom" secondItem="kQt-sY-mF3" secondAttribute="bottom" id="LY3-nL-UUW"/>
                     <constraint firstItem="ha1-hG-s0N" firstAttribute="top" secondItem="RU4-89-1iT" secondAttribute="top" id="Sjx-bK-hZY"/>
                     <constraint firstItem="ha1-hG-s0N" firstAttribute="leading" secondItem="RU4-89-1iT" secondAttribute="leading" id="liq-Nq-re7"/>
-                    <constraint firstAttribute="bottom" secondItem="ha1-hG-s0N" secondAttribute="bottom" id="w0z-DQ-5S1"/>
+                    <constraint firstItem="X8f-la-kxe" firstAttribute="top" secondItem="ha1-hG-s0N" secondAttribute="bottom" constant="4" id="nuY-Mo-fCf"/>
+                    <constraint firstItem="kQt-sY-mF3" firstAttribute="leading" secondItem="ha1-hG-s0N" secondAttribute="leading" id="pSS-eS-f9H"/>
+                    <constraint firstItem="X8f-la-kxe" firstAttribute="leading" secondItem="ha1-hG-s0N" secondAttribute="leading" id="uxb-4E-QVo"/>
+                    <constraint firstItem="kQt-sY-mF3" firstAttribute="top" secondItem="X8f-la-kxe" secondAttribute="bottom" constant="4" id="wsD-Yp-9C7"/>
                 </constraints>
             </collectionViewCellContentView>
-            <size key="customSize" width="359" height="292"/>
+            <size key="customSize" width="359" height="359"/>
             <connections>
                 <outlet property="ImageView" destination="ha1-hG-s0N" id="kaD-dL-Z6X"/>
+                <outlet property="captionLabel" destination="X8f-la-kxe" id="1cZ-Ed-5e5"/>
+                <outlet property="registrationDateLabel" destination="kQt-sY-mF3" id="uKY-Iw-nx0"/>
             </connections>
-            <point key="canvasLocation" x="228.98550724637684" y="381.02678571428572"/>
+            <point key="canvasLocation" x="228.98550724637684" y="403.125"/>
         </collectionViewCell>
     </objects>
 </document>
