@@ -345,8 +345,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 5 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 6 reuse identifiers.
   struct reuseIdentifier {
+    /// Reuse identifier `Cell`.
+    static let cell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "Cell")
     /// Reuse identifier `CollectionViewCell`.
     static let collectionViewCell: Rswift.ReuseIdentifier<HomeCollectionViewCell> = Rswift.ReuseIdentifier(identifier: "CollectionViewCell")
     /// Reuse identifier `HomeCollectionViewCell`.
@@ -506,6 +508,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
+        if UIKit.UIImage(named: "trash", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'trash' is used in storyboard 'ChanegeAccountName', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.chanegeAccountName().changeAccountName() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'changeAccountName' could not be loaded from storyboard 'ChanegeAccountName' as 'ChangeAccountNameViewController'.") }
@@ -688,6 +691,8 @@ struct _R: Rswift.Validatable {
 
       static func validate() throws {
         if UIKit.UIImage(named: "gear", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'gear' is used in storyboard 'Setting', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "pencil", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'pencil' is used in storyboard 'Setting', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "power", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'power' is used in storyboard 'Setting', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }

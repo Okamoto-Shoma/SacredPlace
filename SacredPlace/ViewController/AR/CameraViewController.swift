@@ -32,8 +32,8 @@ class CameraViewController: UIViewController {
         self.arSceneView.session = mySession
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self
-        //        self.arSceneView.showsStatistics = true
-        //        self.arSceneView.debugOptions = [.showWorldOrigin, .showFeaturePoints]
+//        self.arSceneView.showsStatistics = true
+//        self.arSceneView.debugOptions = [.showWorldOrigin, .showFeaturePoints]
         
         //ジェスチャー処理追加
         self.registerGestureRecognizer()
@@ -59,6 +59,8 @@ class CameraViewController: UIViewController {
     
     //MARK: - Action
     
+    /// カメラ設定
+    /// - Parameter sender: UIButton
     @IBAction func handleCameraButton(_ sender: UIButton) {
         let image = self.arSceneView.snapshot()
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
@@ -69,29 +71,23 @@ class CameraViewController: UIViewController {
     /// - Parameter sender: UIButton
     @IBAction func backToPage(_ sender: UIButton) {
         if flag == true {
-            var alertTextField: UITextField?
-            let alert = UIAlertController(
-                title: "選択している画像を保存しますか？",
-                message: "保存する場合は登録名を入力して下さい",
-                preferredStyle: UIAlertController.Style.alert
-            )
-            alert.addTextField(configurationHandler: { (textField: UITextField!) in
+            var alertTextField: UITextField!
+            //アラート処理
+            let alert = UIAlertController(title: "選択している画像を保存しますか？",message: "保存する場合は登録名を入力して下さい",preferredStyle: UIAlertController.Style.alert)
+            alert.addTextField(configurationHandler: {(textField: UITextField!) in
                 alertTextField = textField
             })
-            
+            //キャンセル処理
             alert.addAction(UIAlertAction(title: "登録しない", style: UIAlertAction.Style.cancel) {(action: UIAlertAction) in
                 self.dismiss(animated: true, completion: nil)
             })
+            //登録処理
             alert.addAction(UIAlertAction(title: "登録", style: UIAlertAction.Style.default) {(action: UIAlertAction) in
                 //画像をJPG形式に変換する
                 guard let imageData = self.image?.jpegData(compressionQuality: 0.2) else { return }
-                
-                //guard let userId = Auth.auth().currentUser?.uid else { return }
-                
                 //画像と位置情報データ、投稿データの保存場所を定義
                 let postRef = Firestore.firestore().collection(Const.PostPath).document()
                 let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postRef.documentID + ".jpg")
-                
                 //Storageに画像をアップロード
                 let metadata = StorageMetadata()
                 metadata.contentType = "image/jpeg"
@@ -163,7 +159,10 @@ class CameraViewController: UIViewController {
         let node = SCNNode()
         let scale: CGFloat = 0.3
         let geometry = SCNPlane(width: image.size.width * scale / image.size.height, height: scale)
+
+        print("up: \(image)")
         geometry.firstMaterial?.diffuse.contents = image
+        
         node.geometry = geometry
         node.position = position
         
@@ -224,7 +223,9 @@ extension CameraViewController: CLLocationManagerDelegate {
     ///   - manager: CLLocationManager
     ///   - locations: CLLocation
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        for location in locations {
-            print("DEBUG_PRINT: 緯度:\(location.coordinate.latitude) 経度:\(location.coordinate.longitude) 取得時刻:\(location.timestamp.description)")        }
+        
+        self.locationManager?.distanceFilter = 8.0
+        
+        print("location: \(locations)")
     }
 }

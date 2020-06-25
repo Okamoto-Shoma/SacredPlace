@@ -16,7 +16,7 @@ class SelectPrefecturesViewController: UIViewController {
     private let searchBarHeight: CGFloat = 44
 
     var postArray: [PostData] = []
-    private var filtArray: [PostData] = []
+    private var divideArray: [PostData] = []
     private var images: [Any?] = []
 
     
@@ -44,7 +44,7 @@ class SelectPrefecturesViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.setupSearchBar()
-        self.filtArray = self.postArray
+        self.divideArray = self.postArray
         self.view.backgroundColor = .black
         
         self.getImage()
@@ -81,7 +81,7 @@ extension SelectPrefecturesViewController: UICollectionViewDelegate, UICollectio
     ///   - section: Int
     /// - Returns: self.filtArray.count
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.filtArray.count
+        return self.divideArray.count
     }
     
     /// セル内容
@@ -91,7 +91,7 @@ extension SelectPrefecturesViewController: UICollectionViewDelegate, UICollectio
     /// - Returns: cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.selectPrefecturesCollectionViewCell, for: indexPath)!
-        let postData = self.filtArray[indexPath.row]
+        let postData = self.divideArray[indexPath.row]
         //文字の色設定
         cell.captionLabel.textColor = .white
         cell.registrationDateLabel.textColor = .gray
@@ -134,7 +134,7 @@ extension SelectPrefecturesViewController: UISearchBarDelegate {
     /// 検索ボタン押下時
     /// - Parameter searchBar: UISearchBar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.filtArray = self.postArray.filter { ($0.caption?.contains(self.searchBar.text!) ?? false) }
+        self.divideArray = self.postArray.filter { ($0.caption?.contains(self.searchBar.text!) ?? false) }
         self.collectionView.reloadData()
     }
     
@@ -144,7 +144,7 @@ extension SelectPrefecturesViewController: UISearchBarDelegate {
     ///   - searchText: String
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchBarText = self.searchBar.text, !searchBarText.isEmpty else {
-            self.filtArray = self.postArray
+            self.divideArray = self.postArray
             self.collectionView.reloadData()
             return
         }
@@ -155,7 +155,7 @@ extension SelectPrefecturesViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.showsCancelButton = false
         self.searchBar.text = ""
-        self.filtArray = self.postArray
+        self.divideArray = self.postArray
         self.collectionView.reloadData()
     }
     

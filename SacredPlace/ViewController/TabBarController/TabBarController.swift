@@ -9,15 +9,15 @@
 import UIKit
 import Firebase
 
-class TabBarController: UITabBarController {
-    
+class TabBarController: UITabBarController, UITabBarControllerDelegate {
+        
     //MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.delegate = self
         // Do any additional setup after loading the view.
+        self.delegate = self
         
         //タブアイコンの色
         self.tabBar.tintColor = UIColor(red: 1.0, green: 0.44, blue: 0.11, alpha: 1.0)
@@ -32,22 +32,20 @@ class TabBarController: UITabBarController {
         //currentUserがnilならログインしていない
         if Auth.auth().currentUser == nil {
             //ログインしてない時の処理
-            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login")
+            guard let loginViewController = R.storyboard.login.instantiateInitialViewController() else { return }
             self.present(loginViewController, animated: true, completion: nil)
         }
     }
-}
-
-//MARK: - UITabBarControllerDelegate
-
-extension TabBarController: UITabBarControllerDelegate {
 }
 
 //MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 
 extension TabBarController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    /// フォトライブラリ 設定
+    /// - Parameters:
+    ///   - picker: UIImagePickerController
+    ///   - info: UIImagePickerController.InfoKey
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if info[.originalImage] != nil {
             //選択された画像を取得
@@ -55,6 +53,8 @@ extension TabBarController: UIImagePickerControllerDelegate, UINavigationControl
             }
     }
     
+    /// キャンセル処理
+    /// - Parameter picker: UIImagePickerController
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }

@@ -13,10 +13,10 @@ import FirebaseUI
 class HomeViewController: UIViewController {
     
     private var postArray: [PostData] = []
-    private var postList: [[PostData]] = []
-    private var images: [Any?] = []
+    private var divideArray: [[PostData]] = []
+    private var collectionDisplayImages: [Any?] = []
     private var listener: ListenerRegistration?
-    
+        
     //MARK: - Outlet
     
     @IBOutlet private var collectionView: UICollectionView! {
@@ -56,7 +56,7 @@ class HomeViewController: UIViewController {
     }
     
     //MARK: - PrivateMethod
-    
+
     /// Firebaseからデータを取得
     private func loginCheck() {
         if Auth.auth().currentUser != nil {
@@ -71,7 +71,7 @@ class HomeViewController: UIViewController {
                     }
                     //取得したdocumentをもとにPostDataを作成し、postArrayの配列にする。
                     self.postArray = QuerySnapshot!.documents.map { document in
-                        print("DEBUG_PRINT: document取得 \(document.documentID)")
+                        //print("DEBUG_PRINT: document取得 \(document.documentID)")
                         let postData = PostData(document: document)
                         return postData
                     }
@@ -89,19 +89,19 @@ class HomeViewController: UIViewController {
             }
         }
     }
-    
+
     /// データをフィルター処理
     private func filtData() {
         //フィルター処理
-        let filtGeocoder: [String?] = self.postArray.map { $0.geocoder }
-        self.postList.removeAll()
-        if let filtArray = NSOrderedSet(array: filtGeocoder as [Any]).array as? [String] {
+        let divideGeocoder: [String?] = self.postArray.map { $0.geocoder }
+        self.divideArray.removeAll()
+        if let filtArray = NSOrderedSet(array: divideGeocoder as [Any]).array as? [String] {
             for position in filtArray {
                 let post = self.postArray.filter { $0.geocoder == position }
-                self.postList.append(post)
+                self.divideArray.append(post)
             }
         }
-        self.images = self.postList.map {
+        self.collectionDisplayImages = self.divideArray.map {
             guard let id = $0.first?.id else { return nil }
             return Storage.storage().reference().child(Const.ImagePath).child(id + ".jpg")
         }
@@ -120,7 +120,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     /// - Returns: self.prefectures.count
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // return self.prefectures.count
-        return self.postList.count
+        return self.divideArray.count
     }
     
     /// セル内容
@@ -130,18 +130,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     /// - Returns: cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.homeCollectionViewCell, for: indexPath)!
-        let countData = self.postList[indexPath.row].count
-        //cell.backgroundColor = .black
-        cell.prefecturesLabel.text = self.postList[indexPath.row].first?.geocoder
+        let countData = self.divideArray[indexPath.row].count
+        cell.prefecturesLabel.text = self.divideArray[indexPath.row].first?.geocoder
         cell.registrationCountLabel.text = String(countData)
         cell.prefecturesLabel.textColor = .white
         cell.registrationCountLabel.textColor = .gray
         //一覧に画像表示
         cell.ImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-        if let image = self.images[indexPath.row] as? StorageReference {
+        if let image = self.collectionDisplayImages[indexPath.row] as? StorageReference {
            cell.ImageView.sd_setImage(with: image)
         }
-        
         return cell
     }
     
@@ -151,7 +149,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     ///   - indexPath: IndexPath
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let selectPrefecturesViewController = R.storyboard.selectPrefectures.instantiateInitialViewController() else { return }
-        selectPrefecturesViewController.postArray = self.postList[indexPath.row]
+        selectPrefecturesViewController.postArray = self.divideArray[indexPath.row]
+        selectPrefecturesViewController.title = self.divideArray[indexPath.row].first?.geocoder
         self.navigationController?.pushViewController(selectPrefecturesViewController, animated: true)
     }
 }

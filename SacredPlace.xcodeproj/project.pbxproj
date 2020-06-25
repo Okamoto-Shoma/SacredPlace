@@ -147,8 +147,8 @@
 		C11042BD2499DA2C00DF8CE9 /* ChangeAccountName */ = {
 			isa = PBXGroup;
 			children = (
-				C11042B92499D8F500DF8CE9 /* ChanegeAccountName.storyboard */,
 				C11042BB2499D90800DF8CE9 /* ChangeAccountNameViewController.swift */,
+				C11042B92499D8F500DF8CE9 /* ChanegeAccountName.storyboard */,
 			);
 			path = ChangeAccountName;
 			sourceTree = "<group>";

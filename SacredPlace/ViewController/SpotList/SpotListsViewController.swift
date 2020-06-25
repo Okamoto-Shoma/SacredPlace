@@ -16,7 +16,6 @@ class SpotListsViewController: UIViewController {
     
     private var postArray: [PostData] = []
     private var postDataReceived: [PostData] = []
-    private var imageArray = Storage.storage().reference().child(Const.ImagePath)
     // Firestoreのリスナー
     private var listener: ListenerRegistration?
     private var locationManager: CLLocationManager?
@@ -39,7 +38,7 @@ class SpotListsViewController: UIViewController {
         super.viewDidLoad()
         
         self.locationManager = CLLocationManager()
-        self.locationManager?.delegate = self
+
         
         self.mapView.delegate = self
 
@@ -49,15 +48,16 @@ class SpotListsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        self.startUpdatingLocation()
-        self.dateCheck()
+        
+        self.locationManager?.delegate = self
+        self.tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.setupMapLocation()
+        self.dateCheck()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,38 +79,28 @@ class SpotListsViewController: UIViewController {
                 }
                 //取得したdocumentをもとにPostDataを作成し、postArrayの配列にする。
                 self.postArray = QuerySnapshot!.documents.map { document in
-                    print("DEBUG_PRINT: document取得 \(document.documentID)")
+                    //print("DEBUG_PRINT: document取得 \(document.documentID)")
                     let postData = PostData(document: document)
-                    
+
                     return postData
-                    
-                    self.imageArray = Storage.storage().reference().child(Const.ImagePath).child(postData.id + ".jpg")
                 }
             }
         }
-        self.locationUpDate()
-    }
-    
-    /// 位置情報設定
-    private func startUpdatingLocation() {
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined:
-            self.locationManager?.requestWhenInUseAuthorization()
-        default:
-            break
-        }
-        self.locationManager?.startUpdatingLocation()
     }
     
     /// 地図設定
     private func setupMapLocation() {
+        //マップタイプ
         self.mapView.mapType = .standard
-        //現在地
+        //現在地設定
+        self.mapView.showsUserLocation = true
+        self.mapView.tintColor = .green
+        self.mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
+        //現在地センタリング
         self.mapView.setCenter(self.mapView.userLocation.coordinate, animated: true)
-        self.mapView.userTrackingMode = MKUserTrackingMode.follow
-        let span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: self.mapView.centerCoordinate, span: span)
-        self.mapView.setRegion(region, animated: true)
+        self.mapView.region = region
     }
     
     /// 現在地に近い場所のみ配列にする
@@ -119,7 +109,7 @@ class SpotListsViewController: UIViewController {
         let baseLocation = CLLocation(latitude: baseLatitude, longitude: baseLongitude)
         
         self.postDataReceived = self.postArray.filter({
-            baseLocation.distance(from: CLLocation(latitude: $0.location?.latitude ?? 0, longitude: $0.location?.longitude ?? 0)) < 10
+            baseLocation.distance(from: CLLocation(latitude: $0.location?.latitude ?? 0, longitude: $0.location?.longitude ?? 0)) < 20
         })
         self.tableView.reloadData()
         print("DEBUG_PRINT: \(self.postDataReceived)")
@@ -156,7 +146,6 @@ class SpotListsViewController: UIViewController {
     }
 }
 
-
 //MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -179,21 +168,22 @@ extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
         //セルを取得
         let cell = self.tableView.dequeueReusableCell(withIdentifier: R.nib.spotsListTableViewCell.identifier, for: indexPath) as! SpotsListTableViewCell
         let postData = self.postDataReceived[indexPath.row]
-        
         //各表示設定
-        guard let caption = postData.caption, let baseLatitude = self.locationManager?.location?.coordinate.latitude, let baseLongitude = self.locationManager?.location?.coordinate.longitude, let targetLatitude = postData.location?.latitude, let targetLongitude = postData.location?.longitude else { return cell }
+        guard let caption = postData.caption, let baseLatitude = self.locationManager?.location?.coordinate.latitude, let baseLongitude = self.locationManager?.location?.coordinate.longitude, let targetLatitude = postData.location?.latitude, let targetLongitude = postData.location?.longitude, let name = postData.name else { return cell }
         //タイトル表示
         cell.captionLabel.text = caption
+        //登録者名
+        cell.registrationNameLabel.text = "登録者：" + name
         //現在地からの距離表示
         let baseLocation = CLLocation(latitude: baseLatitude, longitude: baseLongitude)
-        // 登録地
+        //登録地
         let targetLocation = CLLocation(latitude: targetLatitude, longitude: targetLongitude)
-        // 距離
+        //距離
         let distance = baseLocation.distance(from: targetLocation)
         let meter = Int(distance * 1.09361)
-        cell.distanceLabel.text = "現在地から：\(meter)m先"
+        cell.distanceLabel.text = "現在地から：" + String(meter) + "m先"
         //FirebaseStorageから画像を取得
-        let imageRef = self.imageArray.child(postData.id + ".jpg")
+        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + ".jpg")
         //一覧に画像表示
         cell.postImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         cell.postImageView.sd_setImage(with: imageRef)
@@ -206,9 +196,9 @@ extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
     ///   - tableView: UITableView
     ///   - indexPath: IndexPath
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let postData = self.postArray[indexPath.row]
+        let postData = self.postDataReceived[indexPath.row]
         //FirebaseStorageから画像を取得
-        let imageRef = self.imageArray.child(postData.id + ".jpg")
+        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + ".jpg")
         //AR画面に画像表示処理
         imageRef.getData(maxSize: 1 * 1024 * 1024) { (image, error) in
             if error != nil {
@@ -223,7 +213,6 @@ extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
-
 
 //MARK: - CLLocationManagerDelegate
 
@@ -253,13 +242,16 @@ extension SpotListsViewController: CLLocationManagerDelegate {
     ///   - manager: CLLocationManager
     ///   - locations: [CLLocation]
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let lastlocation = locations.last
-        guard let last = lastlocation else { return }
-        let eventDate = last.timestamp
-        if abs(eventDate.timeIntervalSinceNow) < 10.0 {
-            
-            self.locationUpDate()
+        if locations.first != nil {
+            let latitude = String(describing: self.locationManager?.location?.coordinate.latitude)
+            let longitude = String(describing: self.locationManager?.location?.coordinate.longitude)
+
+            print("Latitude:" + latitude +  " Longitude:" + longitude)
         }
+        //現在地から一定距離離れたら位置情報更新
+        self.locationManager?.distanceFilter = 8.0
+        self.locationUpDate()
+        self.tableView.reloadData()
     }
 }
 
@@ -273,12 +265,18 @@ extension SpotListsViewController: MKMapViewDelegate {
     ///   - annotation: MKAnnotation
     /// - Returns: annotationView
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        //現在地とピンを分ける
+        if annotation is MKUserLocation {
+            return nil
+        }
         //MKPinAnnotationViewを宣言
         let annotationView = MKPinAnnotationView()
         //MKPinAnnotationViewのannotationにMKAnnotationのAnnotationを追加
         annotationView.annotation = annotation
-        
-        
+        //ピンの色を設定
+        annotationView.pinTintColor = .blue
+        //注釈を設定
+        annotationView.canShowCallout = true
         
         return annotationView
     }

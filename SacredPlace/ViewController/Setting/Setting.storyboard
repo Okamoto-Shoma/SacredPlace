@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--設定-->
+        <!--その他-->
         <scene sceneID="xjc-UW-gJY">
             <objects>
                 <viewController id="Cm7-Eh-CZ6" customClass="SettingViewController" customModule="SacredPlace" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,34 +15,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpi-3C-dIG">
-                                <rect key="frame" x="136" y="219" width="102" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="ログアウト">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="handleLogout:" destination="Cm7-Eh-CZ6" eventType="touchUpInside" id="qPS-J3-0si"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETD-cF-tQV">
-                                <rect key="frame" x="114" y="121" width="147" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="アカウント名変更">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="handleNameChanege:" destination="Cm7-Eh-CZ6" eventType="touchUpInside" id="fpJ-Ex-laE"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="fa7-5g-f78">
+                                <rect key="frame" x="0.0" y="94" width="375" height="150"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETD-cF-tQV">
+                                        <rect key="frame" x="37.5" y="0.0" width="300" height="50"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="AGM-vn-qC0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="　プロフィール編集" image="pencil" catalog="system"/>
+                                        <connections>
+                                            <action selector="handleNameChanege:" destination="Cm7-Eh-CZ6" eventType="touchUpInside" id="fpJ-Ex-laE"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="b6m-rF-ATS">
+                                        <rect key="frame" x="37.5" y="100" width="300" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpi-3C-dIG">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="LIP-jn-hZW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="　ログアウト" image="power" catalog="system"/>
+                                                <connections>
+                                                    <action selector="handleLogout:" destination="Cm7-Eh-CZ6" eventType="touchUpInside" id="qPS-J3-0si"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ETD-cF-tQV" firstAttribute="width" secondItem="Tpi-3C-dIG" secondAttribute="width" id="hd4-pS-wlX"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fa7-5g-f78" firstAttribute="top" secondItem="XHg-qB-UYG" secondAttribute="top" constant="50" id="6H4-TV-7aF"/>
+                            <constraint firstItem="XHg-qB-UYG" firstAttribute="trailing" secondItem="fa7-5g-f78" secondAttribute="trailing" id="B14-Xm-xzy"/>
+                            <constraint firstItem="fa7-5g-f78" firstAttribute="leading" secondItem="XHg-qB-UYG" secondAttribute="leading" id="p3n-Sd-cka"/>
+                            <constraint firstItem="ETD-cF-tQV" firstAttribute="width" secondItem="ZxI-Jj-Ims" secondAttribute="width" multiplier="0.8" id="rqr-8l-l9M"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="XHg-qB-UYG"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="設定" image="gear" catalog="system" id="3xC-qV-Stv"/>
-                    <navigationItem key="navigationItem" title="設定" id="I7C-M3-4HB"/>
+                    <tabBarItem key="tabBarItem" title="その他" image="gear" catalog="system" id="3xC-qV-Stv"/>
+                    <navigationItem key="navigationItem" title="その他" id="I7C-M3-4HB"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="accountChangeButton" destination="ETD-cF-tQV" id="XeE-vf-jff"/>
+                        <outlet property="logoutButton" destination="Tpi-3C-dIG" id="zBq-T0-DKL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efE-S1-Fxz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -69,5 +97,7 @@
     </scenes>
     <resources>
         <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="power" catalog="system" width="128" height="124"/>
     </resources>
 </document>

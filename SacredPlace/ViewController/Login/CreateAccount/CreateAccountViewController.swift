@@ -31,6 +31,7 @@ class CreateAccountViewController: UIViewController {
         self.userNameTextField.resignFirstResponder()
         self.passwordTextField.resignFirstResponder()
     }
+    
     //MARK: - Action
     
     /// アカウント作成ボタン
@@ -64,19 +65,6 @@ class CreateAccountViewController: UIViewController {
     /// キャンセルボタン
     /// - Parameter sender: UIButton
     @IBAction func handleCancelButton(_ sender: UIButton) {
-        guard let loginViewController = R.storyboard.self.login.instantiateInitialViewController() else { return }
-        present(loginViewController, animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

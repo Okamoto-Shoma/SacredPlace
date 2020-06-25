@@ -18,6 +18,7 @@ class SpotsListTableViewCell: UITableViewCell {
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var registrationNameLabel: UILabel!
     
     //MARK: - LifeCycle
     

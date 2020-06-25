@@ -16,7 +16,6 @@ class LoginViewController: UIViewController {
     @IBOutlet private var mailAddressTextField: UITextField!
     @IBOutlet private var passwordTextField: UITextField!
     
-    
     //MARK: - LifeCycle
 
     override func viewDidLoad() {
