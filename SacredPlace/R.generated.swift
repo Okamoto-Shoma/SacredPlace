@@ -508,7 +508,6 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "trash", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'trash' is used in storyboard 'ChanegeAccountName', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.chanegeAccountName().changeAccountName() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'changeAccountName' could not be loaded from storyboard 'ChanegeAccountName' as 'ChangeAccountNameViewController'.") }

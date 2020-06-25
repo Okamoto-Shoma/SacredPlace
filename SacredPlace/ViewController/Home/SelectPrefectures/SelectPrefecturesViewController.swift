@@ -29,9 +29,9 @@ class SelectPrefecturesViewController: UIViewController {
             //レイアウト調整
             let layout = UICollectionViewFlowLayout()
             layout.sectionInset = UIEdgeInsets(top: 50, left: 0, bottom: 4, right: 0)
-            layout.itemSize = CGSize(width: 182, height: 232)
+            layout.itemSize = CGSize(width: 178, height: 232)
             self.collectionView.collectionViewLayout = layout
-            self.collectionView.backgroundColor = .black
+            self.collectionView.backgroundColor = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
             self.collectionView.contentOffset = CGPoint(x: 0, y: self.searchBarHeight)
             self.collectionView.register(R.nib.selectPrefecturesCollectionViewCell)
         }
@@ -45,9 +45,8 @@ class SelectPrefecturesViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.setupSearchBar()
         self.divideArray = self.postArray
-        self.view.backgroundColor = .black
-        
         self.getImage()
+        self.view.backgroundColor = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
     }
     
     //MARK: - PrivateMethod
@@ -56,9 +55,11 @@ class SelectPrefecturesViewController: UIViewController {
     private func setupSearchBar() {
         self.searchBar.delegate = self
         self.searchBar.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
+        self.searchBar.backgroundColor = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
+        self.searchBar.tintColor = UIColor(red: 200/255, green: 0/255, blue: 0/255, alpha: 1)
+        self.searchBar.barTintColor = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
+        self.searchBar.searchTextField.textColor = .white
         self.collectionView.addSubview(self.searchBar)
-        self.collectionView.backgroundColor = .black
-        self.collectionView.tintColor = .black
     }
     
     /// 画像取得設定

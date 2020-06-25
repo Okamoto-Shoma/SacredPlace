@@ -16,39 +16,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qci-hO-CEL">
-                                <rect key="frame" x="8" y="162.5" width="359" height="25.5"/>
+                                <rect key="frame" x="8" y="167" width="359" height="50"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3zh-qS-heD"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="表示名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7L-RK-NJ6">
-                                <rect key="frame" x="8" y="139" width="49" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <rect key="frame" x="8" y="139" width="61.5" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sen-MC-8pR">
-                                <rect key="frame" x="37" y="528" width="301" height="50"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="93Y-Dd-hgV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="　退会" image="trash" catalog="system"/>
-                                <connections>
-                                    <action selector="handleUnsubscribe:" destination="UQS-ZI-hXU" eventType="touchUpInside" id="ZUk-Tx-aXo"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="l7L-RK-NJ6" firstAttribute="top" secondItem="swF-F3-Jbk" secondAttribute="top" constant="139" id="24l-Vx-HPz"/>
                             <constraint firstItem="swF-F3-Jbk" firstAttribute="trailing" secondItem="Qci-hO-CEL" secondAttribute="trailing" constant="8" id="3kA-11-O0V"/>
-                            <constraint firstItem="sen-MC-8pR" firstAttribute="centerX" secondItem="Qci-hO-CEL" secondAttribute="centerX" id="Kx6-U7-QC1"/>
                             <constraint firstItem="Qci-hO-CEL" firstAttribute="leading" secondItem="swF-F3-Jbk" secondAttribute="leading" constant="8" id="eGf-Zv-GO0"/>
                             <constraint firstItem="Qci-hO-CEL" firstAttribute="top" secondItem="l7L-RK-NJ6" secondAttribute="bottom" constant="4" id="mDY-MW-f33"/>
-                            <constraint firstItem="sen-MC-8pR" firstAttribute="leading" secondItem="swF-F3-Jbk" secondAttribute="leading" constant="37" id="mxj-tu-vuw"/>
-                            <constraint firstItem="swF-F3-Jbk" firstAttribute="bottom" secondItem="sen-MC-8pR" secondAttribute="bottom" constant="40" id="oi4-Ie-Yzw"/>
                             <constraint firstItem="l7L-RK-NJ6" firstAttribute="leading" secondItem="swF-F3-Jbk" secondAttribute="leading" constant="8" id="qjJ-1o-qMt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="swF-F3-Jbk"/>
@@ -58,7 +46,6 @@
                     <connections>
                         <outlet property="accountNametextField" destination="Qci-hO-CEL" id="xN3-9f-YBM"/>
                         <outlet property="label" destination="l7L-RK-NJ6" id="K0g-nb-Wzo"/>
-                        <outlet property="unsubscribeButton" destination="sen-MC-8pR" id="6dL-wb-cKS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Sh-2n-Hq5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -66,7 +53,4 @@
             <point key="canvasLocation" x="195.6521739130435" y="48.883928571428569"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="trash" catalog="system" width="121" height="128"/>
-    </resources>
 </document>

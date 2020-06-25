@@ -21,6 +21,11 @@ class CameraViewController: UIViewController {
     
     //MARK: - Outlet
     @IBOutlet private var arSceneView: ARSCNView!
+    @IBOutlet private var backButton: UIButton! {
+        didSet {
+            self.backButton.titleLabel?.text = "< 戻る"
+        }
+    }
     
     //MARK: - LifeCycle
     
@@ -98,7 +103,6 @@ class CameraViewController: UIViewController {
                         //投稿をキャンセルし、先頭画面に戻る
                         UIApplication.shared.windows.first{ $0.isKeyWindow }?.rootViewController?.dismiss(animated: true, completion: nil)
                     }
-                    
                     //FireStoreに投稿データを保存する
                     guard let name = Auth.auth().currentUser?.displayName, let latitude = self.locationManager?.location?.coordinate.latitude, let longitude = self.locationManager?.location?.coordinate.longitude else { return }
                     let geocoderLocation = CLLocation(latitude: latitude, longitude: longitude)
@@ -159,10 +163,7 @@ class CameraViewController: UIViewController {
         let node = SCNNode()
         let scale: CGFloat = 0.3
         let geometry = SCNPlane(width: image.size.width * scale / image.size.height, height: scale)
-
-        print("up: \(image)")
         geometry.firstMaterial?.diffuse.contents = image
-        
         node.geometry = geometry
         node.position = position
         
@@ -188,12 +189,12 @@ class CameraViewController: UIViewController {
         node.name = "photo"
         
         self.arSceneView.scene.rootNode.addChildNode(node)
-        
         print("DEBUG_PRINT: \(node)")
     }
 }
 
 //MARK: - CLLocationManagerDelegate
+
 extension CameraViewController: CLLocationManagerDelegate {
     
     /// 位置情報取得処理
@@ -223,9 +224,7 @@ extension CameraViewController: CLLocationManagerDelegate {
     ///   - manager: CLLocationManager
     ///   - locations: CLLocation
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         self.locationManager?.distanceFilter = 8.0
-        
         print("location: \(locations)")
     }
 }

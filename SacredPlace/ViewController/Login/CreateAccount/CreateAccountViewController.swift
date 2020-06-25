@@ -13,16 +13,70 @@ import Firebase
 class CreateAccountViewController: UIViewController {
     
     //MARK: - Outlet
+        
+    @IBOutlet private var mailaddressTextField: UITextField! {
+        didSet {
+            self.mailaddressTextField.backgroundColor = .black
+            self.mailaddressTextField.textColor = .white
+            self.mailaddressTextField.tintColor = UIColor(red: 200/255, green: 0/255, blue: 0/255, alpha: 1)
+        }
+    }
+    @IBOutlet private var userNameTextField: UITextField! {
+        didSet {
+            self.userNameTextField.backgroundColor = .black
+            self.userNameTextField.textColor = .white
+            self.userNameTextField.tintColor = UIColor(red: 200/255, green: 0/255, blue: 0/255, alpha: 1)
+        }
+    }
+    @IBOutlet private var passwordTextField: UITextField! {
+        didSet {
+            self.passwordTextField.backgroundColor = .black
+            self.passwordTextField.textColor = .white
+            self.passwordTextField.tintColor = UIColor(red: 200/255, green: 0/255, blue: 0/255, alpha: 1)
+        }
+    }
+    @IBOutlet private var mailAddressLabel: UILabel! {
+        didSet {
+            self.mailAddressLabel.textColor = .white
+        }
+    }
+    @IBOutlet private var passwordLabel: UILabel! {
+        didSet {
+            self.passwordLabel.textColor = .white
+        }
+    }
+    @IBOutlet private var userNameLabel: UILabel! {
+        didSet {
+            self.userNameLabel.textColor = .white
+        }
+    }
+    @IBOutlet private var createAccountButton: UIButton! {
+        didSet {
+            self.createAccountButton.backgroundColor = UIColor(red: 200/255, green: 0/255, blue: 0/255, alpha: 1)
+            self.createAccountButton.layer.cornerRadius = 10.0
+        }
+    }
+    @IBOutlet private var cancelButton: UIButton! {
+        didSet {
+            self.cancelButton.backgroundColor = UIColor(red: 200/255, green: 0/255, blue: 0/255, alpha: 1)
+            self.cancelButton.layer.cornerRadius = 10.0
+        }
+    }
     
-    @IBOutlet private var mailaddressTextField: UITextField!
-    @IBOutlet private var userNameTextField: UITextField!
-    @IBOutlet private var passwordTextField: UITextField!
+    
+    
     
     //MARK: - LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.view.backgroundColor = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
+        //self.view.backgroundColor = .black
+        //プレースホルダー設定
+        self.mailaddressTextField.attributedPlaceholder = NSAttributedString(string: "メールアドレス", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        self.userNameTextField.attributedPlaceholder = NSAttributedString(string: "ユーザー名", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "パスワード", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         // Do any additional setup after loading the view.
     }
     
@@ -40,6 +94,9 @@ class CreateAccountViewController: UIViewController {
         if let address = self.mailaddressTextField.text, let password = self.passwordTextField.text, let userName = self.userNameTextField.text {
             //アドレスとパスワード表示のいずれかでも入力されていない時
             if address.isEmpty || password.isEmpty || userName.isEmpty {
+                let alert = UIAlertController(title: "作成できません", message: "メールアドレス、ユーザー名、パスワードまたは、全てが入力されていません", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "再入力", style: UIAlertAction.Style.cancel))
+                self.present(alert, animated: true)
                 print("DEBUG_PRINT: 何かが空文字です。")
                 return
             }

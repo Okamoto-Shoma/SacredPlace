@@ -26,9 +26,9 @@ class HomeViewController: UIViewController {
             //レイアウト調整
             let layout = UICollectionViewFlowLayout()
             layout.sectionInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
-            layout.itemSize = CGSize(width: 182, height: 232)
+            layout.itemSize = CGSize(width: 178, height: 232)
             self.collectionView.collectionViewLayout = layout
-            self.collectionView.backgroundColor = .black
+            self.collectionView.backgroundColor = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
             self.collectionView.register(R.nib.homeCollectionViewCell)
         }
     }
@@ -41,18 +41,17 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.loginCheck()
         self.navigationController?.navigationBar.barTintColor = .black
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 255/255, green: 99/255, blue: 71/255, alpha: 1)
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        self.view.backgroundColor = .black
-        
+        self.view.backgroundColor = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.loginCheck()
         self.collectionView.collectionViewLayout.invalidateLayout()
-
     }
     
     //MARK: - PrivateMethod

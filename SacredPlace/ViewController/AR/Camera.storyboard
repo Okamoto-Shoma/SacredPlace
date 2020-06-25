@@ -33,11 +33,13 @@
                                     <action selector="handleCameraButton:" destination="AhY-Ny-9Yt" eventType="touchUpInside" id="rnQ-MU-gYx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SnN-N0-Vte">
-                                <rect key="frame" x="0.0" y="20" width="80" height="46"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SnN-N0-Vte">
+                                <rect key="frame" x="9" y="26" width="66" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="◀︎戻る"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="＜ 戻る">
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="backToPage:" destination="AhY-Ny-9Yt" eventType="touchUpInside" id="aYu-M1-1YQ"/>
                                 </connections>
@@ -54,6 +56,7 @@
                     </view>
                     <connections>
                         <outlet property="arSceneView" destination="mvi-22-efJ" id="65L-vu-NID"/>
+                        <outlet property="backButton" destination="SnN-N0-Vte" id="RET-bo-5LC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2x-cR-Ivb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

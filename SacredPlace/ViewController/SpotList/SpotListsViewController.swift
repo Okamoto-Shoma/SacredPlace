@@ -27,7 +27,7 @@ class SpotListsViewController: UIViewController {
             self.tableView.delegate = self
             self.tableView.dataSource = self
             self.tableView.register(R.nib.spotsListTableViewCell)
-            self.tableView.backgroundColor = .black
+            self.tableView.backgroundColor = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
         }
     }
     @IBOutlet private var mapView: MKMapView!
@@ -51,13 +51,13 @@ class SpotListsViewController: UIViewController {
         
         self.locationManager?.delegate = self
         self.tableView.reloadData()
+        self.dateCheck()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.setupMapLocation()
-        self.dateCheck()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -81,9 +81,9 @@ class SpotListsViewController: UIViewController {
                 self.postArray = QuerySnapshot!.documents.map { document in
                     //print("DEBUG_PRINT: document取得 \(document.documentID)")
                     let postData = PostData(document: document)
-
                     return postData
                 }
+                self.locationUpDate()
             }
         }
     }
@@ -95,7 +95,7 @@ class SpotListsViewController: UIViewController {
         //現在地設定
         self.mapView.showsUserLocation = true
         self.mapView.tintColor = .green
-        self.mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
+        self.mapView.userTrackingMode = MKUserTrackingMode.follow
         //現在地センタリング
         self.mapView.setCenter(self.mapView.userLocation.coordinate, animated: true)
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
@@ -168,6 +168,7 @@ extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
         //セルを取得
         let cell = self.tableView.dequeueReusableCell(withIdentifier: R.nib.spotsListTableViewCell.identifier, for: indexPath) as! SpotsListTableViewCell
         let postData = self.postDataReceived[indexPath.row]
+        cell.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         //各表示設定
         guard let caption = postData.caption, let baseLatitude = self.locationManager?.location?.coordinate.latitude, let baseLongitude = self.locationManager?.location?.coordinate.longitude, let targetLatitude = postData.location?.latitude, let targetLongitude = postData.location?.longitude, let name = postData.name else { return cell }
         //タイトル表示
@@ -181,7 +182,7 @@ extension SpotListsViewController: UITableViewDelegate, UITableViewDataSource {
         //距離
         let distance = baseLocation.distance(from: targetLocation)
         let meter = Int(distance * 1.09361)
-        cell.distanceLabel.text = "現在地から：" + String(meter) + "m先"
+        cell.distanceLabel.text = String(meter) + "m先"
         //FirebaseStorageから画像を取得
         let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + ".jpg")
         //一覧に画像表示
@@ -242,11 +243,11 @@ extension SpotListsViewController: CLLocationManagerDelegate {
     ///   - manager: CLLocationManager
     ///   - locations: [CLLocation]
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if locations.first != nil {
-            let latitude = String(describing: self.locationManager?.location?.coordinate.latitude)
-            let longitude = String(describing: self.locationManager?.location?.coordinate.longitude)
+        for location in locations {
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
 
-            print("Latitude:" + latitude +  " Longitude:" + longitude)
+            print("Latitude:" + String(latitude) +  " Longitude:" + String(longitude))
         }
         //現在地から一定距離離れたら位置情報更新
         self.locationManager?.distanceFilter = 8.0
