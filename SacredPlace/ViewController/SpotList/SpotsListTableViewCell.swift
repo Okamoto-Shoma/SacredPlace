@@ -16,9 +16,21 @@ class SpotsListTableViewCell: UITableViewCell {
     //MARK: - Outlet
     
     @IBOutlet weak var postImageView: UIImageView!
-    @IBOutlet weak var captionLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var registrationNameLabel: UILabel!
+    @IBOutlet weak var captionLabel: UILabel! {
+        didSet {
+            self.captionLabel.textColor = .black
+        }
+    }
+    @IBOutlet weak var distanceLabel: UILabel! {
+        didSet {
+            self.distanceLabel.textColor = .black
+        }
+    }
+    @IBOutlet weak var registrationNameLabel: UILabel! {
+        didSet {
+            self.registrationNameLabel.textColor = .black
+        }
+    }
     
     //MARK: - LifeCycle
     

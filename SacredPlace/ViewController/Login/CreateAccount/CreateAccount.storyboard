@@ -15,26 +15,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2wW-R9-FKW">
-                                <rect key="frame" x="27.5" y="80" width="320" height="82"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メールアドレス" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3i-qW-5oc">
-                                        <rect key="frame" x="0.0" y="0.0" width="143" height="24"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rfg-Wx-vem">
-                                        <rect key="frame" x="0.0" y="32" width="320" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="4Gv-KW-czQ"/>
-                                            <constraint firstAttribute="width" constant="320" id="a4d-tC-CJd"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                    </textField>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zE1-cm-DRg">
                                 <rect key="frame" x="27.5" y="284" width="320" height="82"/>
                                 <subviews>
@@ -89,7 +69,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2xf-fZ-Cbk">
-                                <rect key="frame" x="27.5" y="182" width="320" height="82"/>
+                                <rect key="frame" x="27.5" y="80" width="320" height="82"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユーザー名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUt-kJ-Obs">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
@@ -108,6 +88,26 @@
                                     </textField>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2wW-R9-FKW">
+                                <rect key="frame" x="27.5" y="182" width="320" height="82"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メールアドレス" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3i-qW-5oc">
+                                        <rect key="frame" x="0.0" y="0.0" width="143" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rfg-Wx-vem">
+                                        <rect key="frame" x="0.0" y="32" width="320" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="4Gv-KW-czQ"/>
+                                            <constraint firstAttribute="width" constant="320" id="a4d-tC-CJd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -115,11 +115,11 @@
                             <constraint firstItem="GXK-fb-0bJ" firstAttribute="trailing" secondItem="Q59-O7-ppo" secondAttribute="trailing" constant="30" id="6Un-qh-eV4"/>
                             <constraint firstItem="GXK-fb-0bJ" firstAttribute="bottom" secondItem="Q59-O7-ppo" secondAttribute="bottom" constant="40" id="BBY-pV-NXe"/>
                             <constraint firstItem="2xf-fZ-Cbk" firstAttribute="centerX" secondItem="eRv-N9-EQw" secondAttribute="centerX" id="JAg-aU-MFH"/>
+                            <constraint firstItem="2xf-fZ-Cbk" firstAttribute="top" secondItem="GXK-fb-0bJ" secondAttribute="top" constant="80" id="VLC-t1-sqT"/>
                             <constraint firstItem="2wW-R9-FKW" firstAttribute="centerX" secondItem="eRv-N9-EQw" secondAttribute="centerX" id="WZs-Rr-kGL"/>
                             <constraint firstItem="zE1-cm-DRg" firstAttribute="centerX" secondItem="eRv-N9-EQw" secondAttribute="centerX" id="XyO-Tg-bTL"/>
-                            <constraint firstItem="zE1-cm-DRg" firstAttribute="top" secondItem="2xf-fZ-Cbk" secondAttribute="bottom" constant="20" id="oQ8-be-cR7"/>
-                            <constraint firstItem="2xf-fZ-Cbk" firstAttribute="top" secondItem="2wW-R9-FKW" secondAttribute="bottom" constant="20" id="oxk-xx-hBF"/>
-                            <constraint firstItem="2wW-R9-FKW" firstAttribute="top" secondItem="GXK-fb-0bJ" secondAttribute="top" constant="80" id="wTO-p9-2A5"/>
+                            <constraint firstItem="zE1-cm-DRg" firstAttribute="top" secondItem="2wW-R9-FKW" secondAttribute="bottom" constant="20" id="rFh-53-Kyk"/>
+                            <constraint firstItem="2wW-R9-FKW" firstAttribute="top" secondItem="2xf-fZ-Cbk" secondAttribute="bottom" constant="20" id="zIv-dp-50E"/>
                             <constraint firstItem="Q59-O7-ppo" firstAttribute="leading" secondItem="GXK-fb-0bJ" secondAttribute="leading" constant="30" id="zjf-pj-JAS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GXK-fb-0bJ"/>

@@ -29,7 +29,7 @@ class SelectPrefecturesViewController: UIViewController {
             //レイアウト調整
             let layout = UICollectionViewFlowLayout()
             layout.sectionInset = UIEdgeInsets(top: 50, left: 0, bottom: 4, right: 0)
-            layout.itemSize = CGSize(width: 178, height: 232)
+            layout.itemSize = CGSize(width: 178, height: 240)
             self.collectionView.collectionViewLayout = layout
             self.collectionView.backgroundColor = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
             self.collectionView.contentOffset = CGPoint(x: 0, y: self.searchBarHeight)

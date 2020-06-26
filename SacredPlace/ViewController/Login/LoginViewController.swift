@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
             self.mailAddressTextField.backgroundColor = .black
             self.mailAddressTextField.textColor = .white
             self.mailAddressTextField.tintColor = UIColor(red: 200/255, green: 0/255, blue: 0/255, alpha: 1)
+            self.mailAddressTextField.delegate = self
         }
     }
     @IBOutlet private var passwordTextField: UITextField! {
@@ -25,6 +26,7 @@ class LoginViewController: UIViewController {
             self.passwordTextField.backgroundColor = .black
             self.passwordTextField.textColor = .white
             self.passwordTextField.tintColor = UIColor(red: 200/255, green: 0/255, blue: 0/255, alpha: 1)
+            self.passwordTextField.delegate = self
             
         }
     }
@@ -105,6 +107,20 @@ class LoginViewController: UIViewController {
     @IBAction func handleCreateAccountButton(_ sender: UIButton) {
         guard let createAccountViewController = R.storyboard.self.createAccount.instantiateInitialViewController() else { return }
         self.present(createAccountViewController, animated: true, completion: nil)
+    }
+}
+
+//MARK: - UITextFieldDelegate
+extension LoginViewController: UITextFieldDelegate {
+    
+    /// Returnボタン押下時
+    /// - Parameter textField: UITextField
+    /// - Returns: true
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.mailAddressTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+        
+        return true
     }
 }
 

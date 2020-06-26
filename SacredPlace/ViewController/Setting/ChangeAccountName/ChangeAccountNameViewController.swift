@@ -20,6 +20,7 @@ class ChangeAccountNameViewController: UIViewController {
             self.accountNametextField.backgroundColor = .black
             self.accountNametextField.layer.cornerRadius = 10.0
             self.accountNametextField.text = Auth.auth().currentUser?.displayName
+            self.accountNametextField.delegate = self
         }
     }
     @IBOutlet private var label: UILabel! {
@@ -61,5 +62,17 @@ class ChangeAccountNameViewController: UIViewController {
         }
         self.view.endEditing(true)
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+//MARK: - UITextFieldDelegate
+extension ChangeAccountNameViewController: UITextFieldDelegate {
+    
+    /// Returnボタン押下時処理
+    /// - Parameter textField: UITextField
+    /// - Returns: true
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.accountNametextField.resignFirstResponder()
+        return true
     }
 }

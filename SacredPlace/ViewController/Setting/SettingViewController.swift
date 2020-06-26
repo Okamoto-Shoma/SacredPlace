@@ -71,7 +71,7 @@ class SettingViewController: UIViewController {
     /// - Parameter sender: UIButton
     @IBAction func handleNameChanege(_ sender: UIButton) {
         guard let changeAccountNameViewController = R.storyboard.chanegeAccountName.instantiateInitialViewController() else { return }
-        changeAccountNameViewController.title = "プロフィール編集"
+        changeAccountNameViewController.title = "表示名変更"
         self.navigationController?.pushViewController(changeAccountNameViewController, animated: true)
     }
     

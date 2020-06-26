@@ -19,6 +19,7 @@ class CreateAccountViewController: UIViewController {
             self.mailaddressTextField.backgroundColor = .black
             self.mailaddressTextField.textColor = .white
             self.mailaddressTextField.tintColor = UIColor(red: 200/255, green: 0/255, blue: 0/255, alpha: 1)
+            self.mailaddressTextField.delegate = self
         }
     }
     @IBOutlet private var userNameTextField: UITextField! {
@@ -26,6 +27,7 @@ class CreateAccountViewController: UIViewController {
             self.userNameTextField.backgroundColor = .black
             self.userNameTextField.textColor = .white
             self.userNameTextField.tintColor = UIColor(red: 200/255, green: 0/255, blue: 0/255, alpha: 1)
+            self.userNameTextField.delegate = self
         }
     }
     @IBOutlet private var passwordTextField: UITextField! {
@@ -33,6 +35,7 @@ class CreateAccountViewController: UIViewController {
             self.passwordTextField.backgroundColor = .black
             self.passwordTextField.textColor = .white
             self.passwordTextField.tintColor = UIColor(red: 200/255, green: 0/255, blue: 0/255, alpha: 1)
+            self.passwordTextField.delegate = self
         }
     }
     @IBOutlet private var mailAddressLabel: UILabel! {
@@ -123,5 +126,21 @@ class CreateAccountViewController: UIViewController {
     /// - Parameter sender: UIButton
     @IBAction func handleCancelButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+//MARK: - UITextFieldDelegate
+
+extension CreateAccountViewController: UITextFieldDelegate {
+    
+    /// Return押下時処理
+    /// - Parameter textField: UITextField
+    /// - Returns: true
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.mailaddressTextField.resignFirstResponder()
+        self.userNameTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+        
+        return true
     }
 }
