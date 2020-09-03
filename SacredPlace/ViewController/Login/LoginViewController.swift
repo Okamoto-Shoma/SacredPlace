@@ -82,7 +82,7 @@ class LoginViewController: UIViewController {
     @IBAction func handleLoginButton(_ sender: UIButton) {
         if let mailAddress = self.mailAddressTextField.text, let password = self.passwordTextField.text, !mailAddress.isEmpty || !password.isEmpty {
             if mailAddress.isEmpty || password.isEmpty {
-                let alert = UIAlertController(title: "作成できません", message: "メールアドレス、パスワードまたは、全てが入力されていません", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "ログインできません", message: "メールアドレス、パスワードまたは、全てが入力されていません", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "再入力", style: UIAlertAction.Style.cancel))
                 self.present(alert, animated: true)
                 print("DEBUG_PRINT: 何かが空文字です。")

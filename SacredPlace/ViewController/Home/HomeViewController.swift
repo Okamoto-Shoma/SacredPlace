@@ -62,7 +62,7 @@ class HomeViewController: UIViewController {
             //ログイン済
             if self.listener == nil {
                 //listenerが未登録なら、登録してスナップショットを受信
-                let postsRef = Firestore.firestore().collection(Const.PostPath).order(by: "caption", descending: false)
+                let postsRef = Firestore.firestore().collection(Const.PostPath).order(by: "geocoder", descending: false)
                 self.listener = postsRef.addSnapshotListener() { (QuerySnapshot, error) in
                     if let error = error {
                         print("DEBUG_PRINT: snapshotの取得が失敗しました。\(error)")

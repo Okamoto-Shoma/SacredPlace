@@ -64,7 +64,7 @@ class SelectPrefecturesViewController: UIViewController {
     
     /// 画像取得設定
     private func getImage() {
-        self.images = self.postArray.map {
+        self.images = self.divideArray.map {
             let id = $0.id
             return Storage.storage().reference().child(Const.ImagePath).child(id + ".jpg")
         }
@@ -136,6 +136,7 @@ extension SelectPrefecturesViewController: UISearchBarDelegate {
     /// - Parameter searchBar: UISearchBar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.divideArray = self.postArray.filter { ($0.caption?.contains(self.searchBar.text!) ?? false) }
+        self.getImage()
         self.collectionView.reloadData()
     }
     
@@ -146,6 +147,7 @@ extension SelectPrefecturesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchBarText = self.searchBar.text, !searchBarText.isEmpty else {
             self.divideArray = self.postArray
+            self.getImage()
             self.collectionView.reloadData()
             return
         }
@@ -157,6 +159,7 @@ extension SelectPrefecturesViewController: UISearchBarDelegate {
         self.searchBar.showsCancelButton = false
         self.searchBar.text = ""
         self.divideArray = self.postArray
+        self.getImage()
         self.collectionView.reloadData()
     }
     
